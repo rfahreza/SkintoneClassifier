@@ -6,18 +6,22 @@ const HomePresenter = {
 
     const features = [
       {
+        icon: "bi bi-camera",
         title: "Analisis Undertone AI",
         description: "Upload foto wajah dan dapatkan analisis undertone kulit yang akurat dengan teknologi AI"
       },
       {
+        icon: "bi bi-palette",
         title: "Color Palette Personal",
         description: "Rekomendasi warna yang sesuai dengan undertone kulit kamu"
       },
       {
+        icon: "bi bi-bag-heart",
         title: "Rekomendasi Produk",
         description: "Temukan produk dari brand ternama yang cocok untuk kamu"
       },
       {
+        icon: "bi bi-lightbulb",
         title: "Tips & Artikel",
         description: "Pelajari tips kecantikan dari para ahli beauty"
       }
