@@ -1,5 +1,5 @@
 const Header = {
-  async render(isLoggedIn = false, userName = '', currentPath = window.location.pathname) {
+  async render(isLoggedIn = true, userName = 'Fadil', currentPath = window.location.pathname) {
     const isActive = (href) => href === currentPath ? 'active text-pink' : '';
 
     return `
@@ -19,6 +19,7 @@ const Header = {
               <li class="nav-item"><a class="nav-link ${isActive('/products')}" href="/products">Produk</a></li>
               ${isLoggedIn ? `<li class="nav-item"><a class="nav-link ${isActive('/wishlist')}" href="/wishlist">Wishlist</a></li>` : ''}
               <li class="nav-item"><a class="nav-link ${isActive('/articles')}" href="/articles">Artikel</a></li>
+              <li class="nav-item"><a class="nav-link ${isActive('/profile')}" href="/profile">Profile</a></li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 gap-lg-4">
               ${isLoggedIn ? `
@@ -30,7 +31,7 @@ const Header = {
                 </li>
               ` : `
                 <li class="nav-item">
-                  <a class="btn btn-outline-pink" href="/login">Masuk</a>
+                  <a class="btn btn-outline-pink rounded-5 me-2 px-4 py-2 fw-semibold" href="/login">Masuk</a>
                 </li>
                 <li class="nav-item">
                   <a class="btn btn-pink" href="/register">Daftar</a>
