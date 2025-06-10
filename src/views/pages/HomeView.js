@@ -66,7 +66,7 @@ const HomeView = {
       </section>
 
       <!-- How It Works -->
-      <section class="py-5" style="background: #fce7f3;">
+      <section class="py-5 bg-light">
         <div class="container">
           <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
