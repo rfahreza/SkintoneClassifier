@@ -6,8 +6,8 @@ const ProfileView = {
     const user = Auth.getUser();
 
     const contentHtml = `
-      <main class="min-vh-100 bg-light py-5">
-        <div class="container">
+      <main class="min-vh-100 py-5" style="background: #fce7f3;">
+        <div class="container pt-5">
           ${
             !user
               ? `
@@ -27,7 +27,7 @@ const ProfileView = {
             </div>
           `
               : `
-            <div class="container py-5">
+            <div class="container py-5 pt-5">
               <div class="card shadow-sm rounded-4 mx-auto" style="max-width: 600px;">
                 <div class="card-body text-center">
                   <div class="mb-4">
