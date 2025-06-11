@@ -1,4 +1,5 @@
 import Layout from "../components/Layout.js";
+import ClassificationPresenter from "../../presenters/ClassificationPresenter.js";
 
 const tips = [
   "Gunakan pencahayaan natural (dekat jendela)",
@@ -147,7 +148,7 @@ const ClassificationView = {
 
     function stopCamera() {
       if (stream) {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
         stream = null;
         cameraPreview.pause();
         cameraPreview.classList.add("d-none");
@@ -213,13 +214,17 @@ const ClassificationView = {
       loadingSpinner.style.display = "block";
       resultSection.style.display = "none";
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      const result =
-        mockResults[Math.floor(Math.random() * mockResults.length)];
+      try {
+        // Panggil backend Flask lewat presenter
+        const result = await ClassificationPresenter.analyze(fileToAnalyze);
 
-      loadingSpinner.style.display = "none";
-      resultSection.innerHTML = renderResult(result);
-      resultSection.style.display = "block";
+        loadingSpinner.style.display = "none";
+        resultSection.innerHTML = renderResult(result);
+        resultSection.style.display = "block";
+      } catch (err) {
+        loadingSpinner.style.display = "none";
+        alert("Gagal menganalisis gambar: " + err.message);
+      }
       analyzeButton.disabled = false;
     });
 
