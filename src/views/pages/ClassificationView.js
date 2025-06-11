@@ -64,7 +64,7 @@ const mockResults = [
 const ClassificationView = {
   async render() {
     const contentHtml = `
-      <section class="bg-light py-3">
+      <section class="py-3" style="background: #fce7f3;">
         <div class="container">
           <div class="text-center mb-5" style="padding-top: 100px;">
             <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; background: linear-gradient(90deg,#f43f5e,#ec4899);">

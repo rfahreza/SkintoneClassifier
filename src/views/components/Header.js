@@ -1,6 +1,6 @@
 const Header = {
   async render(isLoggedIn = true, userName = 'Fadil', currentPath = window.location.pathname) {
-    const isActive = (href) => href === currentPath ? 'active text-pink' : '';
+    const isActive = (href) => (href === currentPath ? 'active text-pink' : '');
 
     return `
       <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm fixed-top">
@@ -15,28 +15,46 @@ const Header = {
           <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto gap-4 gap-lg-5">
               <li class="nav-item"><a class="nav-link ${isActive('/')}" href="/">Home</a></li>
-              <li class="nav-item"><a class="nav-link ${isActive('/classification')}" href="/classification">Klasifikasi</a></li>
-              <li class="nav-item"><a class="nav-link ${isActive('/products')}" href="/products">Produk</a></li>
-              ${isLoggedIn ? `<li class="nav-item"><a class="nav-link ${isActive('/wishlist')}" href="/wishlist">Wishlist</a></li>` : ''}
-              <li class="nav-item"><a class="nav-link ${isActive('/articles')}" href="/articles">Artikel</a></li>
-              <li class="nav-item"><a class="nav-link ${isActive('/profile')}" href="/profile">Profile</a></li>
+              <li class="nav-item"><a class="nav-link ${isActive(
+                '/classification',
+              )}" href="/classification">Klasifikasi</a></li>
+              <li class="nav-item"><a class="nav-link ${isActive(
+                '/products',
+              )}" href="/products">Produk</a></li>
+              ${
+                isLoggedIn
+                  ? `<li class="nav-item"><a class="nav-link ${isActive(
+                      '/wishlist',
+                    )}" href="/wishlist">Wishlist</a></li>`
+                  : ''
+              }
+              <li class="nav-item"><a class="nav-link ${isActive(
+                '/articles',
+              )}" href="/articles">Artikel</a></li>
+              <li class="nav-item"><a class="nav-link ${isActive(
+                '/profile',
+              )}" href="/profile">Profile</a></li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 gap-lg-4">
-              ${isLoggedIn ? `
+              ${
+                isLoggedIn
+                  ? `
                 <li class="nav-item d-flex align-items-center">
                   <span class="nav-link">Hi, <strong>${userName}</strong></span>
                 </li>
-                <li class="nav-item">
-                  <a class="btn btn-pink" href="/logout">Logout</a>
+                <li class="nav-item d-flex align-items-center justify-content-center" style="height:48px;">
+                  <a class="btn btn-pink d-flex align-items-center justify-content-center w-100 h-100" style="min-width:120px; height:40px;" href="/logout">Logout</a>
                 </li>
-              ` : `
+              `
+                  : `
                 <li class="nav-item">
                   <a class="btn btn-outline-pink rounded-5 me-2 px-4 py-2 fw-semibold" href="/login">Masuk</a>
                 </li>
                 <li class="nav-item">
                   <a class="btn btn-pink" href="/register">Daftar</a>
                 </li>
-              `}
+              `
+              }
             </ul>
           </div>
         </div>
@@ -97,7 +115,7 @@ const Header = {
         }
       </style>
     `;
-  }
+  },
 };
 
 export default Header;

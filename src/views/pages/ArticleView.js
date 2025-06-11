@@ -4,7 +4,7 @@ import ArticlePresenter from "../../presenters/ArticlePresenter.js";
 const ArticleView = {
   async render() {
     const contentHtml = `
-      <section class="py-4" style="background-color: #F5F5F5;">
+      <section class="py-4" style="background: #fce7f3;">
         <div class="container">
           <div class="text-center mb-5">
             <h1 class="fw-bold">Artikel <span class="text-danger">Kecantikan & Fashion</span></h1>

@@ -1,5 +1,5 @@
-import Layout from "../components/Layout.js";
-import HomePresenter from "../../presenters/HomePresenter.js";
+import Layout from '../components/Layout.js';
+import HomePresenter from '../../presenters/HomePresenter.js';
 
 const HomeView = {
   async render() {
@@ -14,7 +14,7 @@ const HomeView = {
           <p class="lead mb-4">${
             isLoggedIn
               ? `Selamat datang kembali, <strong>${user.name}</strong>!`
-              : "Platform AI untuk menganalisis undertone kulit & menemukan produk kecantikan perfect untukmu."
+              : 'Platform AI untuk menganalisis undertone kulit & menemukan produk kecantikan perfect untukmu.'
           }</p>
 
           ${
@@ -24,7 +24,7 @@ const HomeView = {
               <strong>Undertone kamu:</strong> ${user.undertoneResult.type} 
               <br/>Confidence: ${user.undertoneResult.confidence}%
             </div>`
-              : ""
+              : ''
           }
 
           <div class="d-flex justify-content-center gap-3 mt-4">
@@ -51,24 +51,24 @@ const HomeView = {
                 <div class="card h-100 shadow-sm">
                   <div class="card-body text-center">
                     <div class="mb-3">
-                      <i class="${f.icon || "bi bi-stars"} fs-1 text-danger"></i>
+                      <i class="${f.icon || 'bi bi-stars'} fs-1 text-danger"></i>
                     </div>
                     <h5 class="card-title">${f.title}</h5>
                     <p class="card-text">${f.description}</p>
                   </div>
                 </div>
               </div>
-            `
+            `,
               )
-              .join("")}
+              .join('')}
           </div>
         </div>
       </section>
 
       <!-- How It Works -->
-      <section class="py-5 bg-light">
+      <section class="py-5 mb-5" style="background: #fce7f3;">
         <div class="container">
-          <div class="text-center mb-5">
+          <div class="text-center mb-4">
             <h2 class="fw-bold mb-3">
               Cara Kerja <span class="text-danger">Tonalytics</span>
             </h2>
@@ -139,24 +139,24 @@ const HomeView = {
               <div class="col-md-4 mb-4">
                 <div class="card h-100 border-0 shadow-sm">
                   <div class="card-body">
-                    <div class="text-warning mb-2">${"★".repeat(t.rating)}</div>
+                    <div class="text-warning mb-2">${'★'.repeat(t.rating)}</div>
                     <blockquote class="blockquote fst-italic">"${t.comment}"</blockquote>
                     <footer class="blockquote-footer mt-3">${t.name}, ${t.location}</footer>
                   </div>
                   <div class="card-footer text-end">
                     <span class="badge bg-${
-                      t.undertone === "warm"
-                        ? "warning"
-                        : t.undertone === "cool"
-                        ? "primary"
-                        : "success"
+                      t.undertone === 'warm'
+                        ? 'warning'
+                        : t.undertone === 'cool'
+                        ? 'primary'
+                        : 'success'
                     }">${t.undertone}</span>
                   </div>
                 </div>
               </div>
-            `
+            `,
               )
-              .join("")}
+              .join('')}
           </div>
         </div>
       </section>
@@ -184,7 +184,7 @@ const HomeView = {
 
   async afterRender() {
     await Layout.afterRender?.();
-  }
+  },
 };
 
 export default HomeView;
