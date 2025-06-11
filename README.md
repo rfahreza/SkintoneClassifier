@@ -31,7 +31,10 @@
 
 ### 1. Kloning Repositori
 
-git clone https://github.com/rfahreza/SkintoneClassifier.git cd SkintoneClassifier
+```bash
+git clone https://github.com/rfahreza/SkintoneClassifier.git
+cd SkintoneClassifier
+```
 
 ### 2. Instalasi Backend
 
