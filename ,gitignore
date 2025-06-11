@@ -1,0 +1,46 @@
+# Python
+
+# Virtual environment (venv/poetry/conda)
+
+.venv/
+venv/
+env/
+**pycache**/
+_.pyc
+_.pyo
+\*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Editor/IDE specific files
+
+.vscode/
+.idea/
+_.sublime-project
+_.sublime-workspace
+
+# OS generated files
+
+.DS_Store
+Thumbs.db
+
+# Node.js / Frontend
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log\*
+.parcel-cache/ # if using Parcel bundler
+dist/ # Build output directory (e.g., from webpack, Parcel, Rollup)
+build/ # Another common build output directory
+.cache/ # Cache directory for various tools
+
+# Environment variables
+
+.env
+.flaskenv
+
+# Log files
+
+\*.log
