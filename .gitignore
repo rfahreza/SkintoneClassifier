@@ -1,4 +1,37 @@
-.idea
-.vscode
-node_modules
-dist
+# Directories to ignore
+.idea/
+.vscode/
+node_modules/
+dist/
+build/
+.cache/
+.venv/
+venv/
+env/
+
+# Python specific ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Node.js / Frontend specific ignores
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.parcel-cache/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.flaskenv
+
+# Log files
+*.log
+
