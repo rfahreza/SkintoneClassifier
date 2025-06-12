@@ -1,9 +1,11 @@
-import RegisterView from '../views/RegisterView.js';
+import RegisterView from '../views/pages/RegisterView.js';
 import { register } from '../auth/index.js';
+import Auth from '../utils/auth.js';
 
 class RegisterPresenter {
   constructor() {
     this.view = new RegisterView();
+    this.view.init();
     this.view.bindFormSubmit(this.handleRegister.bind(this));
     this.view.bindTogglePasswordVisibility();
   }
@@ -26,6 +28,7 @@ class RegisterPresenter {
     try {
       const success = await register(name, email, password);
       if (success) {
+        Auth.setUser({ name, email });
         this.view.showAlert('Registrasi berhasil! Silakan login.', 'success');
         setTimeout(() => {
           window.history.pushState({}, '', '/login');

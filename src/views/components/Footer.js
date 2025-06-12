@@ -13,7 +13,7 @@ const Footer = {
                 <h5 class="fw-bold mb-0">Tonalytics</h5>
               </div>
               <p class="text-muted">
-                Platform AI terdepan untuk analisis undertone kulit dan rekomendasi produk kecantikan yang tepat untuk setiap wanita Indonesia.
+                Platform AI terdepan untuk analisis skintone kulit dan rekomendasi produk kecantikan yang tepat untuk setiap wanita Indonesia.
               </p>
               <p class="fst-italic text-muted small">
                 "Discover your perfect beauty match with intelligent skin analysis"
@@ -25,7 +25,7 @@ const Footer = {
               <h6 class="fw-bold mb-3">Fitur Utama</h6>
               <ul class="list-unstyled">
                 <li class="mb-2">
-                  <a href="/classification" class="text-decoration-none text-dark d-block">Analisis Undertone</a>
+                  <a href="/classification" class="text-decoration-none text-dark d-block">Analisis Skintone</a>
                 </li>
                 <li class="mb-2">
                   <a href="/products" class="text-decoration-none text-dark d-block">Rekomendasi Produk</a>

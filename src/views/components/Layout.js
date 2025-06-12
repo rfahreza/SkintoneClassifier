@@ -1,6 +1,6 @@
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
-import Auth from '../../utils/auth.js'; // pastikan file ini ada dan sesuai
+import Auth from '../../utils/auth.js';
 
 const Layout = {
   async wrap(contentHtml) {
@@ -19,11 +19,9 @@ const Layout = {
   },
 
   async afterRender() {
-    // Jika Header dan Footer punya afterRender (misal event listener)
     if (typeof Header.afterRender === 'function') await Header.afterRender();
     if (typeof Footer.afterRender === 'function') await Footer.afterRender();
   },
-
 };
 
 export default Layout;

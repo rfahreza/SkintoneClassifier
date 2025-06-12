@@ -1,82 +1,29 @@
 import Layout from "../components/Layout.js";
 import ClassificationPresenter from "../../presenters/ClassificationPresenter.js";
 
-const tips = [
-  "Gunakan pencahayaan natural (dekat jendela)",
-  "Pastikan wajah terlihat jelas tanpa makeup tebal",
-  "Hindari pencahayaan lampu kuning atau putih berlebihan",
-  "Foto dari depan dengan ekspresi natural",
-];
 
-const mockResults = [
-  {
-    undertone: "warm",
-    confidence: 87,
-    colorPalette: {
-      primary: ["#D4A574", "#E6B887", "#F2CC9A", "#FFDEAD"],
-      secondary: ["#CD853F", "#DEB887", "#F5DEB3", "#FFE4B5"],
-      accent: ["#FF6B35", "#FF8C42", "#FFA07A", "#FFCCCB"],
-    },
-    description:
-      "Kulitmu memiliki undertone warm (hangat) dengan dominasi warna kuning dan emas. Ini membuat kamu terlihat lebih glowing dengan warna-warna hangat.",
-    tips: [
-      "Pilih foundation dengan undertone kuning atau golden",
-      "Warna coral, peach, dan bronze sangat cocok untukmu",
-      "Hindari warna dengan base pink atau cool tones",
-      "Gunakan blush warna peach atau coral untuk hasil natural",
-    ],
-  },
-  {
-    undertone: "cool",
-    confidence: 82,
-    colorPalette: {
-      primary: ["#F5C6CB", "#F8D7DA", "#FCE4EC", "#F3E5F5"],
-      secondary: ["#E1BEE7", "#CE93D8", "#BA68C8", "#AB47BC"],
-      accent: ["#FF69B4", "#FF1493", "#DC143C", "#B22222"],
-    },
-    description:
-      "Kulitmu memiliki undertone cool (dingin) dengan dominasi warna pink dan biru. Kamu akan terlihat fresh dengan warna-warna cool.",
-    tips: [
-      "Pilih foundation dengan undertone pink atau neutral",
-      "Warna berry, plum, dan rose sangat flattering",
-      "Hindari warna dengan base orange atau yellow",
-      "Gunakan blush warna pink atau berry untuk hasil natural",
-    ],
-  },
-  {
-    undertone: "neutral",
-    confidence: 90,
-    colorPalette: {
-      primary: ["#E8D5C4", "#F0E6D2", "#F5F0E8", "#FAF5F0"],
-      secondary: ["#D2B48C", "#DDB892", "#E8C4A0", "#F2D0A7"],
-      accent: ["#CD919E", "#D4A5A5", "#DBB5B5", "#E8C5C5"],
-    },
-    description:
-      "Kulitmu memiliki undertone neutral (netral) dengan keseimbangan antara warm dan cool. Kamu beruntung karena bisa menggunakan berbagai warna!",
-    tips: [
-      "Kamu bisa menggunakan foundation warm atau cool",
-      "Hampir semua warna cocok untukmu",
-      "Eksperimen dengan berbagai warna makeup",
-      "Focus pada intensity warna yang sesuai dengan occasion",
-    ],
-  },
+const tips = [
+  'Gunakan pencahayaan natural (dekat jendela)',
+  'Pastikan wajah terlihat jelas tanpa makeup tebal',
+  'Hindari pencahayaan lampu kuning atau putih berlebihan',
+  'Foto dari depan dengan ekspresi natural',
 ];
 
 const ClassificationView = {
   async render() {
     const contentHtml = `
-      <section class="py-3" style="background: #fce7f3;">
-        <div class="container">
-          <div class="text-center mb-5" style="padding-top: 100px;">
+      <section class="py-5 min-vh-100" style="background:  #fce7f3">
+        <div class="container" style="max-width: 900px;">
+          <div class="text-center mb-5" style="padding-top: 80px;">
             <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; background: linear-gradient(90deg,#f43f5e,#ec4899);">
               <i class="bi bi-camera-fill text-white fs-1"></i>
             </div>
-            <h1 class="display-5 fw-bold">Analisis Undertone Kulit</h1>
-            <p class="lead">Upload foto wajahmu dengan pencahayaan yang baik, dan AI kami akan menganalisis undertone kulitmu untuk memberikan rekomendasi produk yang tepat.</p>
+            <h1 class="display-5 fw-bold">Analisis Skintone Kulit</h1>
+            <p class="lead mx-auto" style="max-width: 900px;">Upload foto wajahmu dengan pencahayaan yang baik, dan AI kami akan menganalisis skintone kulitmu untuk memberikan rekomendasi produk yang tepat.</p>
           </div>
 
-          <div id="classification-section" class="mb-3">
-            <div class="card shadow-sm p-4 mx-auto" style="max-width: 440px;">
+          <div id="classification-section" class="mb-4">
+            <div class="card shadow-sm p-4 mx-auto" style="max-width: 900px;">
               <div id="upload-section">
                 <label class="form-label fw-semibold">Upload Foto Wajah</label>
                 <input type="file" id="image-input" accept="image/*" class="form-control mb-3">
@@ -86,7 +33,7 @@ const ClassificationView = {
                 <div id="image-preview" class="mb-4"></div>
                 <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                   <button id="analyze-btn" class="btn btn-pink px-4 py-2" disabled>
-                    <i class="bi bi-stars me-2"></i>Analisis Undertone
+                    <i class="bi bi-stars me-2"></i>Analisis Skintone
                   </button>
                 </div>
               </div>
@@ -98,21 +45,19 @@ const ClassificationView = {
             </div>
           </div>
 
-          <div class="d-flex justify-content-center">
-            <div class="card p-3 shadow-sm mb-4" style="max-width: 440px;">
-              <h3 class="mb-3 fw-semibold">Tips untuk Hasil Terbaik:</h3>
-              <div class="row">
-                ${tips
-                  .map(
-                    (tip) => `
-                  <div class="col-md-6 mb-2 d-flex align-items-start">
-                    <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                    <span class="small">${tip}</span>
-                  </div>
-                `
-                  )
-                  .join("")}
-              </div>
+          <div class="card p-4 shadow-sm mb-4 mx-auto" style="max-width: 900px;">
+            <h3 class="mb-3 fw-semibold">Tips untuk Hasil Terbaik:</h3>
+            <div class="row">
+              ${tips
+                .map(
+                  (tip) => `
+                <div class="col-md-6 mb-2 d-flex align-items-center" style="gap: 0.5rem;">
+                  <i class="bi bi-check-circle-fill text-success" style="font-size: 1.15rem;"></i>
+                  <span class="small" style="font-size: 1rem; line-height: 1.2;">${tip}</span>
+                </div>
+              `,
+                )
+                .join('')}
             </div>
           </div>
         </div>
@@ -128,94 +73,109 @@ const ClassificationView = {
           background: #be185d;
           color: #fff !important;
         }
+        .btn-outline-pink {
+          background: #fff;
+          color: #ec4899 !important;
+          border: 2.5px solid #ec4899;
+          border-radius: 1.5rem !important;
+        }
+        .btn-outline-pink:hover {
+          background: #fbcfe8;
+          color: #ec4899 !important;
+        }
+        .card {
+          border-radius: 1.5rem !important;
+        }
+        .min-vh-100 {
+          min-height: 100vh;
+        }
       </style>
     `;
     return await Layout.wrap(contentHtml);
   },
 
   async afterRender() {
-    const fileInput = document.getElementById("image-input");
-    const previewContainer = document.getElementById("image-preview");
-    const analyzeButton = document.getElementById("analyze-btn");
-    const loadingSpinner = document.getElementById("loading-spinner");
-    const resultSection = document.getElementById("result-section");
+    const fileInput = document.getElementById('image-input');
+    const previewContainer = document.getElementById('image-preview');
+    const analyzeButton = document.getElementById('analyze-btn');
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const resultSection = document.getElementById('result-section');
 
-    const cameraBtn = document.getElementById("camera-btn");
-    const cameraPreview = document.getElementById("camera-preview");
-    const cameraCanvas = document.getElementById("camera-canvas");
+    const cameraBtn = document.getElementById('camera-btn');
+    const cameraPreview = document.getElementById('camera-preview');
+    const cameraCanvas = document.getElementById('camera-canvas');
     let stream = null;
     let selectedFile = null;
-
     function stopCamera() {
       if (stream) {
         stream.getTracks().forEach((track) => track.stop());
         stream = null;
         cameraPreview.pause();
-        cameraPreview.classList.add("d-none");
-        cameraBtn.textContent = "Gunakan Kamera";
-        cameraBtn.classList.remove("btn-pink");
-        cameraBtn.classList.add("btn-outline-pink");
+        cameraPreview.classList.add('d-none');
+        cameraBtn.textContent = 'Gunakan Kamera';
+        cameraBtn.classList.remove('btn-pink');
+        cameraBtn.classList.add('btn-outline-pink');
         cameraBtn.onclick = null;
       }
     }
 
-    window.addEventListener("hashchange", stopCamera);
+    // Matikan kamera saat pindah halaman
+    window.addEventListener('hashchange', stopCamera);
 
-    fileInput.addEventListener("change", (e) => {
+    fileInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (!file) return;
       if (file.size > 5 * 1024 * 1024) {
-        alert("Ukuran file maksimal 5MB");
-        fileInput.value = "";
+        alert('Ukuran file maksimal 5MB');
+        fileInput.value = '';
         return;
       }
       selectedFile = file;
       const reader = new FileReader();
       reader.onload = () => {
-        previewContainer.innerHTML = `<img src="${reader.result}" class="img-fluid rounded shadow" style="max-height: 300px">`;
+        previewContainer.innerHTML = `<div class="d-flex justify-content-center"><img src="${reader.result}" class="img-fluid rounded shadow" style="max-height: 300px"></div>`;
         analyzeButton.disabled = false;
       };
       reader.readAsDataURL(file);
     });
 
-    cameraBtn.addEventListener("click", async () => {
+    cameraBtn.addEventListener('click', async () => {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert("Browser kamu tidak mendukung kamera langsung.");
+        alert('Browser kamu tidak mendukung kamera langsung.');
         return;
       }
       try {
         stream = await navigator.mediaDevices.getUserMedia({ video: true });
         cameraPreview.srcObject = stream;
-        cameraPreview.classList.remove("d-none");
+        cameraPreview.classList.remove('d-none');
         cameraPreview.play();
-        cameraBtn.textContent = "Ambil Foto";
-        cameraBtn.classList.add("btn-pink");
-        cameraBtn.classList.remove("btn-outline-pink");
+        cameraBtn.textContent = 'Ambil Foto';
+        cameraBtn.classList.add('btn-pink');
+        cameraBtn.classList.remove('btn-outline-pink');
 
         cameraBtn.onclick = async () => {
           cameraCanvas.width = cameraPreview.videoWidth;
           cameraCanvas.height = cameraPreview.videoHeight;
-          cameraCanvas.getContext("2d").drawImage(cameraPreview, 0, 0);
-          const dataUrl = cameraCanvas.toDataURL("image/png");
+          cameraCanvas.getContext('2d').drawImage(cameraPreview, 0, 0);
+          const dataUrl = cameraCanvas.toDataURL('image/png');
           previewContainer.innerHTML = `<img src="${dataUrl}" class="img-fluid rounded shadow" style="max-height: 300px">`;
           analyzeButton.disabled = false;
-          stopCamera(); // pastikan kamera ditutup setelah ambil gambar
-          window.selectedFile = dataURLtoFile(dataUrl, "capture.png");
+          stopCamera(); 
+          window.selectedFile = dataURLtoFile(dataUrl, 'capture.png');
         };
       } catch (err) {
-        alert("Tidak dapat mengakses kamera: " + err.message);
+        alert('Tidak dapat mengakses kamera: ' + err.message);
       }
     });
 
-    analyzeButton.addEventListener("click", async () => {
+    analyzeButton.addEventListener('click', async () => {
       const fileToAnalyze = selectedFile || window.selectedFile;
-      if (!fileToAnalyze) return alert("Silakan upload foto terlebih dahulu.");
+      if (!fileToAnalyze) return alert('Silakan upload foto terlebih dahulu.');
       analyzeButton.disabled = true;
-      loadingSpinner.style.display = "block";
-      resultSection.style.display = "none";
+      loadingSpinner.style.display = 'block';
+      resultSection.style.display = 'none';
 
       try {
-        // Panggil backend Flask lewat presenter
         const result = await ClassificationPresenter.analyze(fileToAnalyze);
 
         loadingSpinner.style.display = "none";
@@ -225,7 +185,9 @@ const ClassificationView = {
         loadingSpinner.style.display = "none";
         alert("Gagal menganalisis gambar: " + err.message);
       }
+      
       analyzeButton.disabled = false;
+      stopCamera(); 
     });
 
     function renderResult(result) {
@@ -235,17 +197,17 @@ const ClassificationView = {
             <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(90deg,#f43f5e,#ec4899);">
               <i class="bi bi-stars text-white fs-1"></i>
             </div>
-            <h2 class="fw-bold mb-2">Hasil Analisis Undertone</h2>
+            <h2 class="fw-bold mb-2">Hasil Analisis Skintone</h2>
             <p class="lead mb-1">Confidence Level: <span class="fw-semibold text-danger">${
               result.confidence
             }%</span></p>
-            <h4 class="mb-3">Undertone kamu adalah: <span class="text-capitalize ${
-              result.undertone === "warm"
-                ? "text-warning"
-                : result.undertone === "cool"
-                ? "text-primary"
-                : "text-success"
-            }">${result.undertone}</span></h4>
+            <h4 class="mb-3">Skintone kamu adalah: <span class="text-capitalize ${
+              result.skintone === 'warm'
+                ? 'text-warning'
+                : result.skintone === 'cool'
+                ? 'text-primary'
+                : 'text-success'
+            }">${result.skintone}</span></h4>
             <p class="mb-4">${result.description}</p>
           </div>
           <div class="mb-4">
@@ -257,9 +219,9 @@ const ClassificationView = {
                   .map(
                     (color) => `
                   <div style="width:48px;height:48px;background:${color};border-radius:0.75rem;border:2px solid #fff;box-shadow:0 2px 8px #0001"></div>
-                `
+                `,
                   )
-                  .join("")}
+                  .join('')}
               </div>
               <div class="col-12 mb-2"><strong>Warna Pendukung:</strong></div>
               <div class="col-12 d-flex flex-wrap gap-2 mb-3">
@@ -267,9 +229,9 @@ const ClassificationView = {
                   .map(
                     (color) => `
                   <div style="width:48px;height:48px;background:${color};border-radius:0.75rem;border:2px solid #fff;box-shadow:0 2px 8px #0001"></div>
-                `
+                `,
                   )
-                  .join("")}
+                  .join('')}
               </div>
               <div class="col-12 mb-2"><strong>Warna Aksen:</strong></div>
               <div class="col-12 d-flex flex-wrap gap-2 mb-3">
@@ -277,9 +239,9 @@ const ClassificationView = {
                   .map(
                     (color) => `
                   <div style="width:48px;height:48px;background:${color};border-radius:0.75rem;border:2px solid #fff;box-shadow:0 2px 8px #0001"></div>
-                `
+                `,
                   )
-                  .join("")}
+                  .join('')}
               </div>
             </div>
           </div>
@@ -290,15 +252,15 @@ const ClassificationView = {
                 .map(
                   (tip) => `
                 <li class="mb-2 d-flex align-items-start"><i class="bi bi-check-circle-fill text-success me-2 mt-1"></i> ${tip}</li>
-              `
+              `,
                 )
-                .join("")}
+                .join('')}
             </ul>
           </div>
           <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
             <button id="analyze-again-btn" class="btn btn-outline-pink px-4 py-2"><i class="bi bi-arrow-repeat me-2"></i>Analisis Lagi</button>
-            <a href="/products?undertone=${
-              result.undertone
+            <a href="/products?skintone=${
+              result.skintone
             }" class="btn btn-pink px-4 py-2 d-flex align-items-center gap-2">
               <i class="bi bi-bag-heart"></i>
               <span>Lihat Rekomendasi Produk</span>
@@ -308,12 +270,11 @@ const ClassificationView = {
       `;
     }
 
-    // Reset untuk analisis ulang
-    resultSection.addEventListener("click", function (e) {
-      if (e.target.closest("#analyze-again-btn")) {
-        resultSection.style.display = "none";
-        previewContainer.innerHTML = "";
-        fileInput.value = "";
+    resultSection.addEventListener('click', function (e) {
+      if (e.target.closest('#analyze-again-btn')) {
+        resultSection.style.display = 'none';
+        previewContainer.innerHTML = '';
+        fileInput.value = '';
         selectedFile = null;
         analyzeButton.disabled = true;
       }
@@ -326,7 +287,7 @@ const ClassificationView = {
 export default ClassificationView;
 
 function dataURLtoFile(dataURL, fileName) {
-  const arr = dataURL.split(",");
+  const arr = dataURL.split(',');
   const mime = arr[0].match(/:(.*?);/)[1];
   const bstr = atob(arr[1]);
   let n = bstr.length;

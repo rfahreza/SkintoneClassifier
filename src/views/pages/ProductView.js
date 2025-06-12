@@ -17,7 +17,7 @@ const ProductView = {
         image:
           "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
         category: "foundation",
-        undertoneMatch: "warm",
+        skintoneMatch: "warm",
         shopLink: "https://shopee.co.id",
         platform: "shopee",
         rating: 4.8,
@@ -39,7 +39,7 @@ const ProductView = {
         image:
           "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
         category: "lipstick",
-        undertoneMatch: "cool",
+        skintoneMatch: "cool",
         shopLink: "https://sociolla.com",
         platform: "sociolla",
         rating: 4.6,
@@ -61,13 +61,13 @@ const ProductView = {
         image:
           "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
         category: "blush",
-        undertoneMatch: "neutral",
+        skintoneMatch: "neutral",
         shopLink: "https://zalora.co.id",
         platform: "zalora",
         rating: 4.7,
         reviewCount: 954,
         description:
-          "Palette blush dengan 4 shade yang cocok untuk berbagai undertone",
+          "Palette blush dengan 4 shade yang cocok untuk berbagai skintone",
         features: ["4 shades", "Buildable", "Natural glow", "Travel-friendly"],
       },
       {
@@ -78,13 +78,13 @@ const ProductView = {
         image:
           "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
         category: "lipstick",
-        undertoneMatch: "warm",
+        skintoneMatch: "warm",
         shopLink: "https://shopee.co.id",
         platform: "shopee",
         rating: 4.5,
         reviewCount: 1234,
         description:
-          "Lipstik dengan warna coral yang cocok untuk undertone warm",
+          "Lipstik dengan warna coral yang cocok untuk skintone warm",
         features: [
           "Moisturizing",
           "Natural finish",
@@ -100,13 +100,13 @@ const ProductView = {
         image:
           "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
         category: "blush",
-        undertoneMatch: "cool",
+        skintoneMatch: "cool",
         shopLink: "https://sociolla.com",
         platform: "sociolla",
         rating: 4.9,
         reviewCount: 567,
         description:
-          "Blush dengan warna rose pink yang sempurna untuk cool undertone",
+          "Blush dengan warna rose pink yang sempurna untuk cool skintone",
         features: [
           "Highly pigmented",
           "Blendable",
@@ -122,7 +122,7 @@ const ProductView = {
         image:
           "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
         category: "foundation",
-        undertoneMatch: "neutral",
+        skintoneMatch: "neutral",
         shopLink: "https://zalora.co.id",
         platform: "zalora",
         rating: 4.8,
@@ -144,36 +144,56 @@ const ProductView = {
       zalora: { name: "Zalora", color: "bg-dark text-white" },
     };
 
-    // Jika user belum login
     if (!user) {
-      return await Layout.wrap(`
-        <section class="py-5">
-          <div class="container d-flex justify-content-center align-items-center" style="min-height:60vh;">
-            <div class="card rounded-4 text-center shadow-sm p-4" style="max-width: 440px;">
-              <div class="mb-3">
-                <i class="bi bi-box-arrow-in-right fs-1 text-pink"></i>
-              </div>
-              <h5 class="card-title mb-3">Akses <span class="text-danger">Terbatas</span></h5>
-              <p class="card-text">
-                Silakan login terlebih dahulu untuk melihat rekomendasi produk kecantikan yang sesuai dengan undertone kulitmu.
-              </p>
-              <div class="d-grid gap-2 mt-4">
-                <a href="/login" class="btn btn-outline-pink rounded-5 d-flex justify-content-center align-items-center gap-2 px-4 py-2 fw-semibold">Masuk</a>
-                <a href="/register" class="btn btn-pink rounded-5 d-flex justify-content-center align-items-center gap-2 px-4 py-2 fw-semibold">Daftar Akun Baru</a>
-              </div>
+    return await Layout.wrap(`
+      <section class="py-5" style="background: #fce7f3;">
+        <div class="container d-flex justify-content-center align-items-center" style="min-height:60vh;padding-top:80px;">
+          <div class="card rounded-4 text-center shadow-sm p-4" style="max-width: 440px;">
+            <div class="mb-3">
+              <i class="bi bi-box-arrow-in-right fs-1 text-pink"></i>
+            </div>
+            <h5 class="card-title mb-3">Akses <span class="text-danger">Terbatas</span></h5>
+            <p class="card-text">
+              Silakan login terlebih dahulu untuk melihat rekomendasi produk kecantikan yang sesuai dengan skintone kulitmu.
+            </p>
+            <div class="d-grid gap-2 mt-4">
+              <a href="/login" class="btn btn-outline-pink rounded-5 d-flex justify-content-center align-items-center gap-2 px-4 py-2 fw-semibold">Masuk</a>
+              <a href="/register" class="btn btn-pink rounded-5 d-flex justify-content-center align-items-center gap-2 px-4 py-2 fw-semibold">Daftar Akun Baru</a>
             </div>
           </div>
-        </section>
-      `);
-    }
+        </div>
+      </section>
+    `);
+  }
 
-    // Filter produk berdasarkan undertone user jika ada
+  if (!user.skintoneResult) {
+    return await Layout.wrap(`
+      <section class="py-5" style="background: #fce7f3;">
+        <div class="container d-flex justify-content-center align-items-center" style="min-height:60vh;padding-top:80px;">
+          <div class="card rounded-4 text-center shadow-sm p-4" style="max-width: 440px;">
+            <div class="mb-3">
+              <i class="bi bi-stars fs-1 text-pink"></i>
+            </div>
+            <h5 class="card-title mb-3">Analisis Skintone Diperlukan</h5>
+            <p class="card-text">
+              Lakukan analisis skintone terlebih dahulu untuk mendapatkan rekomendasi produk yang sesuai dengan kulitmu.
+            </p>
+            <div class="d-grid gap-2 mt-4">
+              <a href="/classification" class="btn btn-pink rounded-5 d-flex justify-content-center align-items-center gap-2 px-4 py-2 fw-semibold">Analisis Skintone</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    `);
+  }
+
+    // Filter produk berdasarkan skintone user jika ada
     let filteredProducts = products;
-    if (user.undertoneResult) {
+    if (user.skintoneResult) {
       filteredProducts = products.filter(
         (p) =>
-          p.undertoneMatch === user.undertoneResult.type ||
-          p.undertoneMatch === "all"
+          p.skintoneMatch === user.skintoneResult.type ||
+          p.skintoneMatch === "all"
       );
     }
 
@@ -183,20 +203,20 @@ const ProductView = {
         <div class="container">
           <div class="text-center mb-5">
             <h1 class="display-5 fw-bold">Rekomendasi Produk <span class="text-danger">Kecantikan</span></h1>
-            <p class="lead mb-3">Temukan produk makeup terbaik yang cocok dengan undertone kulitmu</p>
+            <p class="lead mb-3">Temukan produk makeup terbaik yang cocok dengan skintone kulitmu</p>
             ${
-              user.undertoneResult
+              user.skintoneResult
                 ? `
               <div class="mt-3 d-inline-block bg-white rounded-pill px-4 py-2 border border-danger">
-                <span class="small">Menampilkan produk untuk undertone: 
+                <span class="small">Menampilkan produk untuk skintone: 
                   <span class="fw-semibold text-capitalize ${
-                    user.undertoneResult.type === "warm"
+                    user.skintoneResult.type === "warm"
                       ? "text-warning"
-                      : user.undertoneResult.type === "cool"
+                      : user.skintoneResult.type === "cool"
                       ? "text-primary"
                       : "text-success"
                   }">
-                    ${user.undertoneResult.type}
+                    ${user.skintoneResult.type}
                   </span>
                 </span>
               </div>
@@ -216,14 +236,14 @@ const ProductView = {
             <!-- Produk akan dirender di afterRender -->
           </div>
           ${
-            user && !user.undertoneResult
+            user && !user.skintoneResult
               ? `
             <div class="mt-5 bg-gradient-pink rounded-4 p-5 text-center text-white">
               <h3 class="fw-bold mb-3">Dapatkan Rekomendasi yang Lebih Personal!</h3>
-              <p class="mb-4">Lakukan analisis undertone terlebih dahulu untuk mendapatkan rekomendasi produk yang lebih tepat</p>
+              <p class="mb-4">Lakukan analisis skintone terlebih dahulu untuk mendapatkan rekomendasi produk yang lebih tepat</p>
               <a href="/classification" class="btn btn-light text-danger fw-semibold px-4 py-2 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm">
                 <i class="bi bi-stars"></i>
-                Analisis Undertone Sekarang
+                Analisis Skintone Sekarang
               </a>
             </div>
           `
@@ -312,15 +332,15 @@ const ProductView = {
                 }
               </div>
               <span class="badge rounded-pill mb-2 ${
-                product.undertoneMatch === "warm"
+                product.skintoneMatch === "warm"
                   ? "bg-warning text-dark"
-                  : product.undertoneMatch === "cool"
+                  : product.skintoneMatch === "cool"
                   ? "bg-primary"
-                  : product.undertoneMatch === "neutral"
+                  : product.skintoneMatch === "neutral"
                   ? "bg-success"
                   : "bg-secondary"
               }">
-                ${product.undertoneMatch}
+                ${product.skintoneMatch}
               </span>
               <div class="mb-2">
                 <span class="text-warning">${"★".repeat(
@@ -353,11 +373,11 @@ const ProductView = {
     searchInput?.addEventListener("input", function () {
       const q = this.value.trim().toLowerCase();
       let filtered = allProducts;
-      if (user.undertoneResult) {
+      if (user.skintoneResult) {
         filtered = filtered.filter(
           (p) =>
-            p.undertoneMatch === user.undertoneResult.type ||
-            p.undertoneMatch === "all"
+            p.skintoneMatch === user.skintoneResult.type ||
+            p.skintoneMatch === "all"
         );
       }
       if (q) {

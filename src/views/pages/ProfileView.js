@@ -27,8 +27,8 @@ const ProfileView = {
             </div>
           `
               : `
-            <div class="container py-5 pt-5">
-              <div class="card shadow-sm rounded-4 mx-auto" style="max-width: 600px;">
+            <div class="container pt-5">
+              <div class="card shadow-sm rounded-4 mx-auto" style="max-width: 440px;">
                 <div class="card-body text-center">
                   <div class="mb-4">
                     <i class="bi bi-person-circle fs-1 text-pink"></i>
@@ -39,7 +39,7 @@ const ProfileView = {
                   <ul class="list-group list-group-flush text-start">
                     <li class="list-group-item"><strong>Nama:</strong> ${user.name || '-'}</li>
                     <li class="list-group-item"><strong>Email:</strong> ${user.email || '-'}</li>
-                    <li class="list-group-item"><strong>Tipe Undertone:</strong> ${user.undertoneResult?.type || '-'}</li>
+                    <li class="list-group-item"><strong>Tipe Skintone:</strong> ${user.skintoneResult?.type || '-'}</li>
                   </ul>
 
                   <div class="d-grid gap-2 mt-4">
@@ -58,7 +58,18 @@ const ProfileView = {
   },
 
   afterRender() {
-    // Tidak perlu apa-apa karena tidak ada interaksi
+    document.querySelectorAll('a[href="/logout"]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.confirm('Yakin ingin logout?')) {
+          import('../../utils/auth.js').then(({ default: Auth }) => {
+            Auth.logout();
+            window.history.pushState({}, '', '/');
+            window.dispatchEvent(new PopStateEvent('popstate'));
+          });
+        }
+      });
+    });
   },
 };
 

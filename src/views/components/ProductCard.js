@@ -9,7 +9,7 @@ export function renderProductCard(product) {
     zalora: 'bg-dark text-white'
   };
 
-  const undertoneBadge = {
+  const skintoneBadge = {
     warm: 'bg-warning text-dark',
     cool: 'bg-primary',
     neutral: 'bg-success',
@@ -26,7 +26,7 @@ export function renderProductCard(product) {
           <h5 class="card-title">${product.name}</h5>
           <div class="mb-2 text-warning">${'★'.repeat(Math.floor(product.rating))} <small class="text-muted">(${product.reviewCount})</small></div>
           <p class="card-text text-danger fw-bold">Rp ${product.price.toLocaleString('id-ID')} ${product.originalPrice ? `<span class="text-muted text-decoration-line-through fw-normal ms-2">Rp ${product.originalPrice.toLocaleString('id-ID')}</span>` : ''}</p>
-          <span class="badge ${undertoneBadge[product.undertoneMatch]} text-uppercase">${product.undertoneMatch}</span>
+          <span class="badge ${skintoneBadge[product.skintoneMatch]} text-uppercase">${product.skintoneMatch}</span>
           <p class="mt-2 text-muted small">${product.description}</p>
           ${product.features.slice(0, 2).map(f => `<span class="badge bg-light text-dark me-1">${f}</span>`).join('')}
         </div>

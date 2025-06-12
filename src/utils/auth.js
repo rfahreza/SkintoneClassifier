@@ -16,8 +16,7 @@ const Auth = {
    * @returns {string|null}
    */
   getToken() {
-    // return localStorage.getItem(TOKEN_KEY);
-    return 'dummy_token_123';
+    return localStorage.getItem(TOKEN_KEY);
   },
 
   /**
@@ -33,13 +32,8 @@ const Auth = {
    * @returns {object|null}
    */
   getUser() {
-    // const userJson = localStorage.getItem(USER_KEY);
-    // return userJson ? JSON.parse(userJson) : null;
-  return {
-    name: 'Fadil',
-    email: 'fadil@example.com',
-    undertoneResult: { type: 'Warm', confidence: 85 }
-  };
+    const userJson = localStorage.getItem(USER_KEY);
+    return userJson ? JSON.parse(userJson) : null;
   },
 
   /**
@@ -47,8 +41,7 @@ const Auth = {
    * @returns {boolean}
    */
   isLoggedIn() {
-    // return !!this.getToken();
-    return true;
+    return !!this.getToken();
   },
 
   /**

@@ -9,20 +9,20 @@ const HomeView = {
       <section class="py-4 text-center" style="background: #fce7f3;">
         <div class="container px-4 px-lg-5" style="max-width: 2200px;">
           <h1 class="display-4 fw-bold text-danger mb-2">
-            Temukan Undertone<br> Kulitmu dengan AI
+            Temukan Skintone<br> Kulitmu dengan AI
           </h1>
           <p class="lead mb-4">${
             isLoggedIn
               ? `Selamat datang kembali, <strong>${user.name}</strong>!`
-              : 'Platform AI untuk menganalisis undertone kulit & menemukan produk kecantikan perfect untukmu.'
+              : 'Platform AI untuk menganalisis skintone kulit & menemukan produk kecantikan perfect untukmu.'
           }</p>
 
           ${
-            isLoggedIn && user.undertoneResult
+            isLoggedIn && user.skintoneResult
               ? `
             <div class="alert alert-info w-75 mx-auto mt-4">
-              <strong>Undertone kamu:</strong> ${user.undertoneResult.type} 
-              <br/>Confidence: ${user.undertoneResult.confidence}%
+              <strong>Skintone kamu:</strong> ${user.skintoneResult.type} 
+              <br/>Confidence: ${user.skintoneResult.confidence}%
             </div>`
               : ''
           }
@@ -73,7 +73,7 @@ const HomeView = {
               Cara Kerja <span class="text-danger">Tonalytics</span>
             </h2>
             <p class="lead text-muted">
-              Hanya 3 langkah mudah untuk menemukan undertone kulitmu
+              Hanya 3 langkah mudah untuk menemukan skintone kulitmu
             </p>
           </div>
 
@@ -105,7 +105,7 @@ const HomeView = {
                 </div>
                 <div class="card-body">
                   <h5 class="card-title fw-semibold">Analisis AI</h5>
-                  <p class="card-text text-muted">AI kami akan menganalisis undertone kulit kamu secara akurat</p>
+                  <p class="card-text text-muted">AI kami akan menganalisis skintone kulit kamu secara akurat</p>
                 </div>
               </div>
             </div>
@@ -145,12 +145,12 @@ const HomeView = {
                   </div>
                   <div class="card-footer text-end">
                     <span class="badge bg-${
-                      t.undertone === 'warm'
+                      t.skintone === 'warm'
                         ? 'warning'
-                        : t.undertone === 'cool'
+                        : t.skintone === 'cool'
                         ? 'primary'
                         : 'success'
-                    }">${t.undertone}</span>
+                    }">${t.skintone}</span>
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@ const HomeView = {
       <section class="py-5" style="background: linear-gradient(to right, #f43f5e, #ec4899);">
         <div class="container text-center text-white">
           <h2 class="fw-bold mb-4 fs-2">
-            Siap Menemukan Undertone Kulitmu?
+            Siap Menemukan Skintone Kulitmu?
           </h2>
           <p class="lead text-light mb-4">
             Bergabung dengan ribuan wanita Indonesia yang sudah menemukan produk kecantikan perfect untuk mereka

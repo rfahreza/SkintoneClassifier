@@ -7,13 +7,13 @@ const HomePresenter = {
     const features = [
       {
         icon: "bi bi-camera",
-        title: "Analisis Undertone AI",
-        description: "Upload foto wajah dan dapatkan analisis undertone kulit yang akurat dengan teknologi AI"
+        title: "Analisis Skintone AI",
+        description: "Upload foto wajah dan dapatkan analisis skintone kulit yang akurat dengan teknologi AI"
       },
       {
         icon: "bi bi-palette",
         title: "Color Palette Personal",
-        description: "Rekomendasi warna yang sesuai dengan undertone kulit kamu"
+        description: "Rekomendasi warna yang sesuai dengan skintone kulit kamu"
       },
       {
         icon: "bi bi-bag-heart",
@@ -32,22 +32,22 @@ const HomePresenter = {
         name: "Dewi Sartika",
         location: "Jakarta",
         rating: 5,
-        comment: "Akhirnya aku tau undertone kulitku! Rekomendasi lipstiknya cocok banget.",
-        undertone: "warm"
+        comment: "Akhirnya aku tau skintone kulitku! Rekomendasi lipstiknya cocok banget.",
+        skintone: "warm"
       },
       {
         name: "Putri Maharani", 
         location: "Bandung",
         rating: 5,
         comment: "Sekarang aku lebih percaya diri memilih warna outfit dan makeup.",
-        undertone: "cool"
+        skintone: "cool"
       },
       {
         name: "Sari Indah",
         location: "Surabaya", 
         rating: 5,
         comment: "Hasilnya akurat banget! Produk yang direkomendasikan semuanya cocok.",
-        undertone: "neutral"
+        skintone: "neutral"
       }
     ];
 

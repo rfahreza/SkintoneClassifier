@@ -2,7 +2,6 @@ class ProductPresenter {
   constructor({ user }) {
     this.user = user;
 
-    // Data produk langsung didefinisikan di sini
     this.products = [
       {
         id: '1',
@@ -12,7 +11,7 @@ class ProductPresenter {
         originalPrice: 159000,
         image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400',
         category: 'foundation',
-        undertoneMatch: 'warm',
+        skintoneMatch: 'warm',
         shopLink: 'https://shopee.co.id',
         platform: 'shopee',
         rating: 4.8,
@@ -28,7 +27,7 @@ class ProductPresenter {
         originalPrice: 109000,
         image: 'https://images.unsplash.com/photo-1617225884285-2e75c8f3b9d9?w=400',
         category: 'cushion',
-        undertoneMatch: 'neutral',
+        skintoneMatch: 'neutral',
         shopLink: 'https://tokopedia.com',
         platform: 'tokopedia',
         rating: 4.6,
@@ -44,7 +43,7 @@ class ProductPresenter {
         originalPrice: 89000,
         image: 'https://images.unsplash.com/photo-1602524209775-dbe3c4bb2173?w=400',
         category: 'lipstick',
-        undertoneMatch: 'cool',
+        skintoneMatch: 'cool',
         shopLink: 'https://shopee.co.id',
         platform: 'shopee',
         rating: 4.9,
@@ -52,7 +51,6 @@ class ProductPresenter {
         description: 'Lip cream matte dengan warna intens dan tahan lama',
         features: ['Transferproof', 'Longwear', 'Vitamin C']
       },
-      // Tambahkan produk lainnya jika perlu
     ];
 
     this.filtered = [];

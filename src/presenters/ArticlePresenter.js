@@ -1,5 +1,3 @@
-// presenters/ArticlePresenter.js
-
 import ArticleView from '../views/pages/ArticleView.js';
 
 const ArticlePresenter = {
@@ -7,28 +5,28 @@ const ArticlePresenter = {
     this.artikelData = [
       {
         id: '1',
-        title: 'Cara Menentukan Undertone Kulit dengan Mudah',
-        excerpt: 'Pelajari trik sederhana untuk mengetahui apakah kulitmu memiliki undertone warm, cool, atau neutral tanpa perlu ribet.',
+        title: 'Cara Menentukan Skintone Kulit dengan Mudah',
+        excerpt: 'Pelajari trik sederhana untuk mengetahui apakah kulitmu memiliki skintone warm, cool, atau neutral tanpa perlu ribet.',
         content: 'Lorem ipsum content...',
         category: 'skincare',
         author: 'Dr. Sari Beauty',
         publishDate: '2024-01-20',
         readTime: '5 min',
         image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600',
-        tags: ['undertone', 'skincare', 'tips'],
+        tags: ['skintone', 'skincare', 'tips'],
         featured: true
       },
       {
         id: '2',
-        title: '10 Lipstik Terbaik untuk Undertone Warm',
-        excerpt: 'Rekomendasi lipstik dengan shade yang perfect untuk kamu yang memiliki undertone warm. Dari drugstore hingga high-end!',
+        title: '10 Lipstik Terbaik untuk Skintone Warm',
+        excerpt: 'Rekomendasi lipstik dengan shade yang perfect untuk kamu yang memiliki skintone warm. Dari drugstore hingga high-end!',
         content: 'Lorem ipsum content...',
         category: 'makeup',
         author: 'Rina Makeup Artist',
         publishDate: '2024-01-18',
         readTime: '7 min',
         image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600',
-        tags: ['lipstik', 'warm undertone', 'makeup'],
+        tags: ['lipstik', 'warm skintone', 'makeup'],
         featured: true
       },
       {
@@ -59,15 +57,15 @@ const ArticlePresenter = {
       },
       {
         id: '5',
-        title: 'Fashion Tips: Warna Outfit untuk Cool Undertone',
-        excerpt: 'Pelajari warna-warna yang paling flattering untuk kamu yang memiliki cool undertone. Mix and match yang perfect!',
+        title: 'Fashion Tips: Warna Outfit untuk Cool Skintone',
+        excerpt: 'Pelajari warna-warna yang paling flattering untuk kamu yang memiliki cool skintone. Mix and match yang perfect!',
         content: 'Lorem ipsum content...',
         category: 'fashion',
         author: 'Lina Stylist',
         publishDate: '2024-01-10',
         readTime: '6 min',
         image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=600',
-        tags: ['fashion', 'cool undertone', 'outfit'],
+        tags: ['fashion', 'cool skintone', 'outfit'],
         featured: false
       },
       {

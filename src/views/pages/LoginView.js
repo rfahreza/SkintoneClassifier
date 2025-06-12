@@ -1,4 +1,4 @@
-import LoginPresenter from "../../presenters/LoginPresenter.js";
+import LoginPresenter from '../../presenters/LoginPresenter.js';
 
 const LoginView = {
   async render() {
@@ -71,17 +71,19 @@ const LoginView = {
   },
 
   afterRender() {
-    const form = document.getElementById("loginForm");
-    const togglePassword = document.getElementById("togglePassword");
-    const passwordInput = document.getElementById("password");
-    const icon = togglePassword.querySelector("i");
+    const form = document.getElementById('loginForm');
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const icon = togglePassword.querySelector('i');
 
-    form.addEventListener("submit", LoginPresenter.handleSubmit);
+    form.addEventListener('submit', LoginPresenter.handleSubmit);
 
-    togglePassword.addEventListener("click", () => {
-      const type = passwordInput.type === "password" ? "text" : "password";
-      passwordInput.type = type;
-      icon.className = type === "password" ? "bi bi-eye" : "bi bi-eye-slash";
+    icon.className = passwordInput.type === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
+
+    togglePassword.addEventListener('click', () => {
+      const isHidden = passwordInput.type === 'password';
+      passwordInput.type = isHidden ? 'text' : 'password';
+      icon.className = isHidden ? 'bi bi-eye' : 'bi bi-eye-slash';
     });
   },
 };

@@ -1,16 +1,18 @@
 class RegisterView {
   constructor() {
-    this.form = document.getElementById("register-form");
-    this.nameInput = document.getElementById("name");
-    this.emailInput = document.getElementById("email");
-    this.passwordInput = document.getElementById("password");
-    this.confirmPasswordInput = document.getElementById("confirmPassword");
-    this.passwordToggle = document.getElementById("togglePassword");
-    this.confirmPasswordToggle = document.getElementById(
-      "toggleConfirmPassword"
-    );
-    this.submitBtn = document.getElementById("register-btn");
-    this.alertBox = document.getElementById("alert-box");
+    // Kosong dulu, DOM diakses setelah render
+  }
+
+  init() {
+    this.form = document.getElementById('register-form');
+    this.nameInput = document.getElementById('name');
+    this.emailInput = document.getElementById('email');
+    this.passwordInput = document.getElementById('password');
+    this.confirmPasswordInput = document.getElementById('confirmPassword');
+    this.passwordToggle = document.getElementById('togglePassword');
+    this.confirmPasswordToggle = document.getElementById('toggleConfirmPassword');
+    this.submitBtn = document.getElementById('register-btn');
+    this.alertBox = document.getElementById('alert-box');
   }
 
   static async render() {
@@ -47,7 +49,7 @@ class RegisterView {
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Buat password" required>
-                    <button class="btn btn-outline-pink" type="button" id="togglePassword"><i class="bi bi-eye"></i></button>
+                    <button class="btn btn-outline-pink" type="button" id="togglePassword"><i class="bi bi-eye-slash"></i></button>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -55,7 +57,7 @@ class RegisterView {
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
                     <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Ulangi password" required>
-                    <button class="btn btn-outline-pink" type="button" id="toggleConfirmPassword"><i class="bi bi-eye"></i></button>
+                    <button class="btn btn-outline-pink" type="button" id="toggleConfirmPassword"><i class="bi bi-eye-slash"></i></button>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-pink w-100 rounded-4 d-flex align-items-center justify-content-center" id="register-btn" style="height: 48px; font-size: 1.1rem; font-weight: 600;">Buat Akun</button>
@@ -98,7 +100,6 @@ class RegisterView {
           border-radius: 1rem;
         }
         .input-pink {
-          /* border: 2px solid #f9a8d4 !important; */
           border: none !important;
           border-radius: 0.5rem !important;
           background: #fff;
@@ -107,22 +108,19 @@ class RegisterView {
           border-color: #ec4899 !important;
           box-shadow: 0 0 0 0.15rem #fbcfe8;
         }
-        
       </style>
     `;
   }
 
   static afterRender() {
     const view = new RegisterView();
-    view.bindFormSubmit((data) => {
-      // Anda bisa panggil presenter di sini jika perlu
-      // Sementara, biarkan default (nanti presenter akan override)
-    });
+    view.init(); // Inisialisasi DOM setelah render
+    view.bindFormSubmit(() => {});
     view.bindTogglePasswordVisibility();
   }
 
   bindFormSubmit(handler) {
-    this.form.addEventListener("submit", (e) => {
+    this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const data = {
         name: this.nameInput.value,
@@ -135,19 +133,30 @@ class RegisterView {
   }
 
   bindTogglePasswordVisibility() {
-    this.passwordToggle.addEventListener("click", () => {
-      const type = this.passwordInput.type === "password" ? "text" : "password";
-      this.passwordInput.type = type;
+    if (!this.passwordToggle || !this.confirmPasswordToggle) return;
+    const toggleIconPassword = this.passwordToggle.querySelector('i');
+    const toggleIconConfirm = this.confirmPasswordToggle.querySelector('i');
+
+    // Ensure initial state matches input type
+    toggleIconPassword.className =
+      this.passwordInput.type === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
+    toggleIconConfirm.className =
+      this.confirmPasswordInput.type === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
+
+    this.passwordToggle.addEventListener('click', () => {
+      const isHidden = this.passwordInput.type === 'password';
+      this.passwordInput.type = isHidden ? 'text' : 'password';
+      toggleIconPassword.className = isHidden ? 'bi bi-eye' : 'bi bi-eye-slash';
     });
 
-    this.confirmPasswordToggle.addEventListener("click", () => {
-      const type =
-        this.confirmPasswordInput.type === "password" ? "text" : "password";
-      this.confirmPasswordInput.type = type;
+    this.confirmPasswordToggle.addEventListener('click', () => {
+      const isHidden = this.confirmPasswordInput.type === 'password';
+      this.confirmPasswordInput.type = isHidden ? 'text' : 'password';
+      toggleIconConfirm.className = isHidden ? 'bi bi-eye' : 'bi bi-eye-slash';
     });
   }
 
-  showAlert(message, variant = "danger") {
+  showAlert(message, variant = 'danger') {
     this.alertBox.innerHTML = `
       <div class="alert alert-${variant} alert-dismissible fade show" role="alert">
         ${message}
@@ -157,28 +166,15 @@ class RegisterView {
   }
 
   clearAlert() {
-    this.alertBox.innerHTML = "";
+    this.alertBox.innerHTML = '';
   }
 
   setLoading(isLoading) {
     this.submitBtn.disabled = isLoading;
     this.submitBtn.innerHTML = isLoading
-      ? `
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Mendaftar...
-    `
-      : "Buat Akun";
+      ? `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Mendaftar...`
+      : 'Buat Akun';
   }
 }
 
 export default RegisterView;
-
-// Tambahkan static afterRender agar SPA bisa binding event setelah render
-RegisterView.afterRender = async function () {
-  const view = new RegisterView();
-  // Pastikan form dan tombol sudah ada di DOM
-  view.bindFormSubmit((data) => {
-    // Anda bisa panggil presenter di sini jika perlu
-    // Sementara, biarkan default (nanti presenter akan override)
-  });
-  view.bindTogglePasswordVisibility();
-};

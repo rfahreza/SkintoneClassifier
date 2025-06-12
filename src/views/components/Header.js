@@ -1,5 +1,5 @@
 const Header = {
-  async render(isLoggedIn = true, userName = 'Fadil', currentPath = window.location.pathname) {
+  async render(isLoggedIn, userName, currentPath = window.location.pathname) {
     const isActive = (href) => (href === currentPath ? 'active text-pink' : '');
 
     return `
@@ -40,7 +40,7 @@ const Header = {
                 isLoggedIn
                   ? `
                 <li class="nav-item d-flex align-items-center">
-                  <span class="nav-link">Hi, <strong>${userName}</strong></span>
+                  <span class="nav-link">Hi, <strong>${userName}!</strong></span>
                 </li>
                 <li class="nav-item d-flex align-items-center justify-content-center" style="height:48px;">
                   <a class="btn btn-pink d-flex align-items-center justify-content-center w-100 h-100" style="min-width:120px; height:40px;" href="/logout">Logout</a>
@@ -115,6 +115,21 @@ const Header = {
         }
       </style>
     `;
+  },
+
+  async afterRender() {
+    document.querySelectorAll('a[href="/logout"]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.confirm('Yakin ingin logout?')) {
+          import('../../utils/auth.js').then(({ default: Auth }) => {
+            Auth.logout();
+            window.history.pushState({}, '', '/');
+            window.dispatchEvent(new PopStateEvent('popstate'));
+          });
+        }
+      });
+    });
   },
 };
 

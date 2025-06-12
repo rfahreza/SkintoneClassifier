@@ -13,7 +13,7 @@ const WishlistView = {
     // Guest (belum login)
     if (!user) {
       return await Layout.wrap(`
-        <section class="py-5" style="min-height:80vh; margin-top:50px; background: #fce7f3;">
+        <section class="py-5" style="min-height:80vh; background: #fce7f3;">
           <div class="container d-flex justify-content-center align-items-center" style="min-height:60vh;">
             <div class="card beauty-card p-5 text-center shadow-sm" style="max-width: 440px;">
               <div class="mb-4">
@@ -82,15 +82,15 @@ const WishlistView = {
                           'id-ID',
                         )}</span>
                         <span class="badge rounded-pill ${
-                          product.undertoneMatch === 'warm'
+                          product.skintoneMatch === 'warm'
                             ? 'bg-warning text-dark'
-                            : product.undertoneMatch === 'cool'
+                            : product.skintoneMatch === 'cool'
                             ? 'bg-primary'
-                            : product.undertoneMatch === 'neutral'
+                            : product.skintoneMatch === 'neutral'
                             ? 'bg-success'
                             : 'bg-secondary'
                         }">
-                          ${product.undertoneMatch === 'all' ? 'All' : product.undertoneMatch}
+                          ${product.skintoneMatch === 'all' ? 'All' : product.skintoneMatch}
                         </span>
                       </div>
                       <p class="card-text small mb-2">${product.description}</p>
@@ -123,7 +123,7 @@ const WishlistView = {
                 <h2 class="fw-bold mb-3">Wishlist Masih Kosong</h2>
                 <p class="text-muted mb-4">Mulai tambahkan produk kecantikan favorit kamu ke wishlist untuk mudah diakses nanti</p>
                 <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                  <a href="/classification" class="btn btn-outline-pink d-flex align-items-center gap-2"><i class="bi bi-stars"></i> Cek Undertone Dulu</a>
+                  <a href="/classification" class="btn btn-outline-pink d-flex align-items-center gap-2"><i class="bi bi-stars"></i> Cek Skintone Dulu</a>
                   <a href="/products" class="btn btn-pink d-flex align-items-center gap-2"><i class="bi bi-bag-heart"></i> Jelajahi Produk</a>
                 </div>
               </div>
