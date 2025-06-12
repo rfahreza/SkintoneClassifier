@@ -1,7 +1,5 @@
 class RegisterView {
-  constructor() {
-    // Kosong dulu, DOM diakses setelah render
-  }
+  constructor() {}
 
   init() {
     this.form = document.getElementById('register-form');
@@ -99,25 +97,45 @@ class RegisterView {
         .card {
           border-radius: 1rem;
         }
-        .input-pink {
-          border: none !important;
-          border-radius: 0.5rem !important;
-          background: #fff;
-        }
-        .input-pink:focus {
-          border-color: #ec4899 !important;
-          box-shadow: 0 0 0 0.15rem #fbcfe8;
-        }
       </style>
     `;
   }
 
-  static afterRender() {
-    const view = new RegisterView();
-    view.init(); // Inisialisasi DOM setelah render
-    view.bindFormSubmit(() => {});
-    view.bindTogglePasswordVisibility();
-  }
+async afterRender() {
+  const form = document.getElementById('register-form');
+
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+
+  const togglePassword = document.getElementById('togglePassword');
+  const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+
+  const iconPassword = togglePassword.querySelector('i');
+  const iconConfirm = toggleConfirmPassword.querySelector('i');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // handler form (bisa kamu isi sendiri atau sambungkan ke Presenter)
+  });
+
+  // Atur icon awal
+  iconPassword.className = passwordInput.type === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
+  iconConfirm.className = confirmPasswordInput.type === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
+
+  // Event toggle untuk password
+  togglePassword.addEventListener('click', () => {
+    const isHidden = passwordInput.type === 'password';
+    passwordInput.type = isHidden ? 'text' : 'password';
+    iconPassword.className = isHidden ? 'bi bi-eye' : 'bi bi-eye-slash';
+  });
+
+  // Event toggle untuk confirm password
+  toggleConfirmPassword.addEventListener('click', () => {
+    const isHidden = confirmPasswordInput.type === 'password';
+    confirmPasswordInput.type = isHidden ? 'text' : 'password';
+    iconConfirm.className = isHidden ? 'bi bi-eye' : 'bi bi-eye-slash';
+  });
+}
 
   bindFormSubmit(handler) {
     this.form.addEventListener('submit', (e) => {
@@ -134,25 +152,21 @@ class RegisterView {
 
   bindTogglePasswordVisibility() {
     if (!this.passwordToggle || !this.confirmPasswordToggle) return;
-    const toggleIconPassword = this.passwordToggle.querySelector('i');
-    const toggleIconConfirm = this.confirmPasswordToggle.querySelector('i');
 
-    // Ensure initial state matches input type
-    toggleIconPassword.className =
-      this.passwordInput.type === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
-    toggleIconConfirm.className =
-      this.confirmPasswordInput.type === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye';
+    const togglePassword = (input, toggleButton) => {
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      const icon = toggleButton.querySelector('i');
+      icon.classList.toggle('bi-eye-slash', !isPassword);
+      icon.classList.toggle('bi-eye', isPassword);
+    };
 
     this.passwordToggle.addEventListener('click', () => {
-      const isHidden = this.passwordInput.type === 'password';
-      this.passwordInput.type = isHidden ? 'text' : 'password';
-      toggleIconPassword.className = isHidden ? 'bi bi-eye' : 'bi bi-eye-slash';
+      togglePassword(this.passwordInput, this.passwordToggle);
     });
 
     this.confirmPasswordToggle.addEventListener('click', () => {
-      const isHidden = this.confirmPasswordInput.type === 'password';
-      this.confirmPasswordInput.type = isHidden ? 'text' : 'password';
-      toggleIconConfirm.className = isHidden ? 'bi bi-eye' : 'bi bi-eye-slash';
+      togglePassword(this.confirmPasswordInput, this.confirmPasswordToggle);
     });
   }
 

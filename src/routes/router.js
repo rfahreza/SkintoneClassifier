@@ -11,7 +11,7 @@ import RegisterPresenter from '../presenters/RegisterPresenter.js';
 const routes = {
   '/': HomeView,
   '/login': LoginView,
-  '/register': RegisterView, // tambahkan ini agar SPA routing ke register
+  '/register': RegisterView, 
   '/classification': ClassificationView,
   '/products': ProductView,
   '/wishlist': WishlistView,
