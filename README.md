@@ -7,7 +7,7 @@ Selamat datang di **Tonalytics**, platform untuk menganalisis skintone kulit men
 ## Petunjuk Penggunaan
 Untuk instruksi lebih lanjut, lihat file [USAGE.md](USAGE.md) untuk cara menggunakan website ini.
 
-**Tonalytics** adalah aplikasi web berbasis AI yang menganalisis Skintone kulit pengguna dari foto wajah dan memberikan **rekomendasi palet warna serta tips makeup/fashion** yang sesuai.
+**Tonalytics** adalah aplikasi web berbasis AI yang menganalisis Skintone kulit pengguna dari foto wajah dan memberikan **rekomendasi palet warna serta tips makeup / fashion** yang sesuai.
 
 ## ✨ Fitur Utama
 
@@ -43,7 +43,7 @@ git clone https://github.com/rfahreza/SkintoneClassifier.git
 cd SkintoneClassifier
 ```
 
-### 2. Instalasi Backend
+### 2. Instalasi Backend Session
 
 ```bash
 cd backend
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 cd ..
 ```
 
-### 3. Instalasi Frontend
+### 3. Instalasi Frontend Session
 
 ```bash
 npm install
