@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
@@ -12,6 +13,18 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'public'),
+          to: path.resolve(__dirname, 'dist'), // salin langsung ke dist, tanpa folder dist bersarang
+          globOptions: {
+            ignore: ['**/index.html'], // mencegah salinan index.html ganda karena HtmlWebpackPlugin menangani itu
+          },
+          noErrorOnMissing: true,
+        },
+      ],
     }),
   ],
   module: {

@@ -36,3 +36,16 @@ exports.loginHandler = async (request, h) => {
     });
   });
 };
+
+exports.getAllProductsHandler = async (request, h) => {
+  return new Promise((resolve) => {
+    db.all('SELECT * FROM products', (err, rows) => {
+      if (err) {
+        console.error('❌ Gagal mengambil data produk:', err.message);
+        return resolve(h.response({ message: 'Gagal mengambil data produk' }).code(500));
+      }
+
+      resolve(h.response(rows).code(200));
+    });
+  });
+};

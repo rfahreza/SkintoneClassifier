@@ -9,17 +9,71 @@ const tips = [
   'Foto dari depan dengan ekspresi natural',
 ];
 
+const mockResults = [
+  {
+    undertone: 'warm',
+    confidence: 87,
+    colorPalette: {
+      primary: ['#D4A574', '#E6B887', '#F2CC9A', '#FFDEAD'],
+      secondary: ['#CD853F', '#DEB887', '#F5DEB3', '#FFE4B5'],
+      accent: ['#FF6B35', '#FF8C42', '#FFA07A', '#FFCCCB'],
+    },
+    description:
+      'Kulitmu memiliki undertone warm (hangat) dengan dominasi warna kuning dan emas. Ini membuat kamu terlihat lebih glowing dengan warna-warna hangat.',
+    tips: [
+      'Pilih foundation dengan undertone kuning atau golden',
+      'Warna coral, peach, dan bronze sangat cocok untukmu',
+      'Hindari warna dengan base pink atau cool tones',
+      'Gunakan blush warna peach atau coral untuk hasil natural',
+    ],
+  },
+  {
+    undertone: 'cool',
+    confidence: 82,
+    colorPalette: {
+      primary: ['#F5C6CB', '#F8D7DA', '#FCE4EC', '#F3E5F5'],
+      secondary: ['#E1BEE7', '#CE93D8', '#BA68C8', '#AB47BC'],
+      accent: ['#FF69B4', '#FF1493', '#DC143C', '#B22222'],
+    },
+    description:
+      'Kulitmu memiliki undertone cool (dingin) dengan dominasi warna pink dan biru. Kamu akan terlihat fresh dengan warna-warna cool.',
+    tips: [
+      'Pilih foundation dengan undertone pink atau neutral',
+      'Warna berry, plum, dan rose sangat flattering',
+      'Hindari warna dengan base orange atau yellow',
+      'Gunakan blush warna pink atau berry untuk hasil natural',
+    ],
+  },
+  {
+    undertone: 'neutral',
+    confidence: 90,
+    colorPalette: {
+      primary: ['#E8D5C4', '#F0E6D2', '#F5F0E8', '#FAF5F0'],
+      secondary: ['#D2B48C', '#DDB892', '#E8C4A0', '#F2D0A7'],
+      accent: ['#CD919E', '#D4A5A5', '#DBB5B5', '#E8C5C5'],
+    },
+    description:
+      'Kulitmu memiliki undertone neutral (netral) dengan keseimbangan antara warm dan cool. Kamu beruntung karena bisa menggunakan berbagai warna!',
+    tips: [
+      'Kamu bisa menggunakan foundation warm atau cool',
+      'Hampir semua warna cocok untukmu',
+      'Eksperimen dengan berbagai warna makeup',
+      'Focus pada intensity warna yang sesuai dengan occasion',
+    ],
+  },
+];
+
 const ClassificationView = {
   async render() {
     const contentHtml = `
       <section class="py-5 min-vh-100" style="background:  #fce7f3">
         <div class="container" style="max-width: 900px;">
-          <div class="text-center mb-5" style="padding-top: 80px;">
+          <div class="text-center mb-5" style="padding-top: 100px;">
             <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; background: linear-gradient(90deg,#f43f5e,#ec4899);">
               <i class="bi bi-camera-fill text-white fs-1"></i>
             </div>
-            <h1 class="display-5 fw-bold">Analisis Skintone Kulit</h1>
-            <p class="lead mx-auto" style="max-width: 900px;">Upload foto wajahmu dengan pencahayaan yang baik, dan AI kami akan menganalisis skintone kulitmu untuk memberikan rekomendasi produk yang tepat.</p>
+            <h1 class="display-5 fw-bold">Analisis Undertone Kulit</h1>
+            <p class="lead mx-auto" style="max-width: 900px;">Upload foto wajahmu dengan pencahayaan yang baik, dan AI kami akan menganalisis undertone kulitmu untuk memberikan rekomendasi produk yang tepat.</p>
           </div>
 
           <div id="classification-section" class="mb-4">
@@ -33,7 +87,7 @@ const ClassificationView = {
                 <div id="image-preview" class="mb-4"></div>
                 <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                   <button id="analyze-btn" class="btn btn-pink px-4 py-2" disabled>
-                    <i class="bi bi-stars me-2"></i>Analisis Skintone
+                    <i class="bi bi-stars me-2"></i>Analisis Undertone
                   </button>
                 </div>
               </div>
@@ -106,6 +160,8 @@ const ClassificationView = {
     const cameraCanvas = document.getElementById('camera-canvas');
     let stream = null;
     let selectedFile = null;
+
+    // Fungsi untuk mematikan kamera
     function stopCamera() {
       if (stream) {
         stream.getTracks().forEach((track) => track.stop());
@@ -160,7 +216,7 @@ const ClassificationView = {
           const dataUrl = cameraCanvas.toDataURL('image/png');
           previewContainer.innerHTML = `<img src="${dataUrl}" class="img-fluid rounded shadow" style="max-height: 300px">`;
           analyzeButton.disabled = false;
-          stopCamera(); 
+          stopCamera(); // pastikan kamera ditutup setelah ambil gambar
           window.selectedFile = dataURLtoFile(dataUrl, 'capture.png');
         };
       } catch (err) {
@@ -176,6 +232,7 @@ const ClassificationView = {
       resultSection.style.display = 'none';
 
       try {
+        // Panggil backend Flask lewat presenter
         const result = await ClassificationPresenter.analyze(fileToAnalyze);
 
         loadingSpinner.style.display = "none";
@@ -185,9 +242,9 @@ const ClassificationView = {
         loadingSpinner.style.display = "none";
         alert("Gagal menganalisis gambar: " + err.message);
       }
-      
+
       analyzeButton.disabled = false;
-      stopCamera(); 
+      stopCamera(); // pastikan kamera dimatikan setelah analisis
     });
 
     function renderResult(result) {
@@ -197,17 +254,17 @@ const ClassificationView = {
             <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(90deg,#f43f5e,#ec4899);">
               <i class="bi bi-stars text-white fs-1"></i>
             </div>
-            <h2 class="fw-bold mb-2">Hasil Analisis Skintone</h2>
+            <h2 class="fw-bold mb-2">Hasil Analisis Undertone</h2>
             <p class="lead mb-1">Confidence Level: <span class="fw-semibold text-danger">${
               result.confidence
             }%</span></p>
-            <h4 class="mb-3">Skintone kamu adalah: <span class="text-capitalize ${
-              result.skintone === 'warm'
+            <h4 class="mb-3">Undertone kamu adalah: <span class="text-capitalize ${
+              result.undertone === 'warm'
                 ? 'text-warning'
-                : result.skintone === 'cool'
+                : result.undertone === 'cool'
                 ? 'text-primary'
                 : 'text-success'
-            }">${result.skintone}</span></h4>
+            }">${result.undertone}</span></h4>
             <p class="mb-4">${result.description}</p>
           </div>
           <div class="mb-4">
@@ -259,8 +316,8 @@ const ClassificationView = {
           </div>
           <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
             <button id="analyze-again-btn" class="btn btn-outline-pink px-4 py-2"><i class="bi bi-arrow-repeat me-2"></i>Analisis Lagi</button>
-            <a href="/products?skintone=${
-              result.skintone
+            <a href="/products?undertone=${
+              result.undertone
             }" class="btn btn-pink px-4 py-2 d-flex align-items-center gap-2">
               <i class="bi bi-bag-heart"></i>
               <span>Lihat Rekomendasi Produk</span>
@@ -270,6 +327,7 @@ const ClassificationView = {
       `;
     }
 
+    // Reset untuk analisis ulang
     resultSection.addEventListener('click', function (e) {
       if (e.target.closest('#analyze-again-btn')) {
         resultSection.style.display = 'none';

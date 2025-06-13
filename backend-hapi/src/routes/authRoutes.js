@@ -1,4 +1,4 @@
-const { registerHandler, loginHandler } = require('../handlers/authHandler');
+const { registerHandler, loginHandler, getAllProductsHandler } = require('../handlers/authHandler');
 
 module.exports = [
   {
@@ -11,4 +11,10 @@ module.exports = [
     path: '/login',
     handler: loginHandler,
   },
+  {
+  method: 'GET',
+  path: '/products',
+  handler: getAllProductsHandler,
+}
+
 ];

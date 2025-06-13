@@ -1,82 +1,55 @@
 class ProductPresenter {
-  constructor({ user }) {
-    this.user = user;
-
-    this.products = [
-      {
-        id: '1',
-        name: 'Perfect Match Foundation',
-        brand: 'Maybelline',
-        price: 129000,
-        originalPrice: 159000,
-        image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400',
-        category: 'foundation',
-        skintoneMatch: 'warm',
-        shopLink: 'https://shopee.co.id',
-        platform: 'shopee',
-        rating: 4.8,
-        reviewCount: 2341,
-        description: 'Foundation dengan coverage penuh yang tahan hingga 24 jam',
-        features: ['SPF 20', 'Oil-free', 'Non-comedogenic', 'Buildable coverage']
-      },
-      {
-        id: '2',
-        name: 'Glow Skin Cushion',
-        brand: 'Wardah',
-        price: 98000,
-        originalPrice: 109000,
-        image: 'https://images.unsplash.com/photo-1617225884285-2e75c8f3b9d9?w=400',
-        category: 'cushion',
-        skintoneMatch: 'neutral',
-        shopLink: 'https://tokopedia.com',
-        platform: 'tokopedia',
-        rating: 4.6,
-        reviewCount: 1432,
-        description: 'Cushion ringan dengan efek glowing dan perlindungan UV',
-        features: ['SPF 30', 'Dewy finish', 'Vitamin E']
-      },
-      {
-        id: '3',
-        name: 'Matte Velvet Lip Cream',
-        brand: 'Make Over',
-        price: 75000,
-        originalPrice: 89000,
-        image: 'https://images.unsplash.com/photo-1602524209775-dbe3c4bb2173?w=400',
-        category: 'lipstick',
-        skintoneMatch: 'cool',
-        shopLink: 'https://shopee.co.id',
-        platform: 'shopee',
-        rating: 4.9,
-        reviewCount: 3120,
-        description: 'Lip cream matte dengan warna intens dan tahan lama',
-        features: ['Transferproof', 'Longwear', 'Vitamin C']
-      },
-    ];
-
+  constructor() {
+    this.products = [];
     this.filtered = [];
-    this.container = document.querySelector('#produk-list-view');
+    this.container = [];
   }
 
+static async getProducts() {
+    try {
+      const response = await fetch('http://localhost:4000/products');
+      const data = await response.json();
+
+      // Cek jika data adalah array
+      if (!Array.isArray(data)) {
+        console.error('❌ Data produk bukan array:', data);
+        return [];
+      }
+
+      return data;
+    } catch (error) {
+      console.error('❌ Gagal mengambil data produk:', error);
+      return [];
+    }
+  }
+
+
   async init() {
-    if (!this.user) {
-      this.renderRestrictedView();
+    this.container = document.querySelector('#produk-list-view');
+    if (!this.container) {
+      console.error('❌ #produk-list-view tidak ditemukan di DOM');
       return;
     }
 
+    await this.fetchProducts();
     this.filtered = this.products;
     this.render();
     this.setupFilter();
   }
 
-  renderRestrictedView() {
-    this.container.innerHTML = `
-      <div class="alert alert-warning text-center mt-4" role="alert">
-        <h4 class="alert-heading">Akses Terbatas</h4>
-        <p>Silakan login terlebih dahulu untuk melihat daftar produk rekomendasi.</p>
-        <hr>
-        <a href="#/login" class="btn btn-primary">Login Sekarang</a>
-      </div>
-    `;
+  async fetchProducts() {
+    try {
+      const response = await fetch(`http://localhost:3000/products`);
+      const data = await response.json();
+      this.products = data;
+    } catch (error) {
+      console.error('Gagal memuat produk:', error);
+      this.container.innerHTML = `
+        <div class="alert alert-danger mt-4 text-center">
+          <strong>Oops!</strong> Gagal memuat data produk. Silakan coba lagi nanti.
+        </div>
+      `;
+    }
   }
 
   render() {
@@ -87,12 +60,12 @@ class ProductPresenter {
         ${this.filtered.map(product => `
           <div class="col">
             <div class="card h-100 shadow-sm">
-              <img src="${product.image}" class="card-img-top" alt="${product.name}">
+              <img src="${product.imageUrl}" class="card-img-top" alt="${product.name}">
               <div class="card-body">
                 <h5 class="card-title">${product.name}</h5>
-                <p class="card-text text-muted">${product.brand}</p>
+                <p class="card-text text-muted">${product.shade}</p>
                 <p class="card-text fw-bold">Rp ${product.price.toLocaleString()}</p>
-                <a href="${product.shopLink}" target="_blank" class="btn btn-sm btn-outline-primary">Beli di ${product.platform}</a>
+                <a href="${product.link}" target="_blank" class="btn btn-sm btn-outline-primary">Beli Sekarang</a>
               </div>
             </div>
           </div>

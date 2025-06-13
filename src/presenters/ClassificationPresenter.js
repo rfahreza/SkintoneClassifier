@@ -14,7 +14,6 @@ const ClassificationPresenter = {
 
     const result = await response.json();
 
-    // Simpan ke localStorage (atau panggil API backend jika tersedia)
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       user.skintoneResult = {

@@ -8,134 +8,213 @@ const ProductView = {
 
     // Data produk dummy (bisa ambil dari presenter jika sudah ada)
     const products = [
-      {
-        id: "1",
-        name: "Perfect Match Foundation",
-        brand: "Maybelline",
-        price: 129000,
-        originalPrice: 159000,
-        image:
-          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
-        category: "foundation",
-        skintoneMatch: "warm",
-        shopLink: "https://shopee.co.id",
-        platform: "shopee",
-        rating: 4.8,
-        reviewCount: 2341,
-        description:
-          "Foundation dengan coverage penuh yang tahan hingga 24 jam",
-        features: [
-          "SPF 20",
-          "Oil-free",
-          "Non-comedogenic",
-          "Buildable coverage",
-        ],
-      },
-      {
-        id: "2",
-        name: "Velvet Matte Lipstick",
-        brand: "Wardah",
-        price: 45000,
-        image:
-          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
-        category: "lipstick",
-        skintoneMatch: "cool",
-        shopLink: "https://sociolla.com",
-        platform: "sociolla",
-        rating: 4.6,
-        reviewCount: 1876,
-        description: "Lipstik matte dengan formula lembut dan tahan lama",
-        features: [
-          "Long-lasting",
-          "Vitamin E",
-          "Halal certified",
-          "Cruelty-free",
-        ],
-      },
-      {
-        id: "3",
-        name: "Glow Blush Palette",
-        brand: "Pixy",
-        price: 89000,
-        originalPrice: 110000,
-        image:
-          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
-        category: "blush",
-        skintoneMatch: "neutral",
-        shopLink: "https://zalora.co.id",
-        platform: "zalora",
-        rating: 4.7,
-        reviewCount: 954,
-        description:
-          "Palette blush dengan 4 shade yang cocok untuk berbagai skintone",
-        features: ["4 shades", "Buildable", "Natural glow", "Travel-friendly"],
-      },
-      {
-        id: "4",
-        name: "Coral Sunset Lipstick",
-        brand: "Emina",
-        price: 35000,
-        image:
-          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
-        category: "lipstick",
-        skintoneMatch: "warm",
-        shopLink: "https://shopee.co.id",
-        platform: "shopee",
-        rating: 4.5,
-        reviewCount: 1234,
-        description:
-          "Lipstik dengan warna coral yang cocok untuk skintone warm",
-        features: [
-          "Moisturizing",
-          "Natural finish",
-          "Affordable",
-          "Easy to apply",
-        ],
-      },
-      {
-        id: "5",
-        name: "Rose Pink Blush",
-        brand: "Make Over",
-        price: 125000,
-        image:
-          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
-        category: "blush",
-        skintoneMatch: "cool",
-        shopLink: "https://sociolla.com",
-        platform: "sociolla",
-        rating: 4.9,
-        reviewCount: 567,
-        description:
-          "Blush dengan warna rose pink yang sempurna untuk cool skintone",
-        features: [
-          "Highly pigmented",
-          "Blendable",
-          "Long-wearing",
-          "Professional quality",
-        ],
-      },
-      {
-        id: "6",
-        name: "Natural Glow Foundation",
-        brand: "Somethinc",
-        price: 159000,
-        image:
-          "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
-        category: "foundation",
-        skintoneMatch: "neutral",
-        shopLink: "https://zalora.co.id",
-        platform: "zalora",
-        rating: 4.8,
-        reviewCount: 890,
-        description:
-          "Foundation dengan hasil natural yang cocok untuk sehari-hari",
-        features: [
-          "Dewy finish",
-          "Medium coverage",
-          "Skincare benefits",
-          "Eco-friendly",
-        ],
-      },
+  // CUSHION
+  {
+    id: "1",
+    name: "Colorfit Cushion 11C Pink Fair",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/11c-pink-fair.jpg",
+    category: "chusion",
+    skintoneMatch: "fair",
+    platform: "shopee"
+  },
+  {
+    id: "2",
+    name: "Colorfit Cushion 22N Light Ivory",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/22n-light-ivory.jpg",
+    category: "chusion",
+    skintoneMatch: "fair",
+    platform: "shopee"
+  },
+  {
+    id: "3",
+    name: "Colorfit Cushion 23W Warm Ivory",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/23w-warm-ivory.jpg",
+    category: "chusion",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "4",
+    name: "Colorfit Cushion 32N Neutral Beige",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/32n-neutral-beige.jpg",
+    category: "chusion",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "5",
+    name: "Colorfit Cushion 33W Olive Beige",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/33w-olive-beige.jpg",
+    category: "chusion",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "6",
+    name: "Colorfit Cushion 42N Neutral Sand",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/42n-neutral-sand.jpg",
+    category: "chusion",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "7",
+    name: "Colorfit Cushion 43W Golden Sand",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/43w-golden-sand.jpg",
+    category: "chusion",
+    skintoneMatch: "dark",
+    platform: "shopee"
+  },
+  {
+    id: "8",
+    name: "Colorfit Cushion 52N Almond",
+    brand: "Wardah",
+    price: 122550,
+    image: "/img/chusion/52n-almond.jpg",
+    category: "chusion",
+    skintoneMatch: "dark",
+    platform: "shopee"
+  },
+
+  // CREAM BLUSH
+  {
+    id: "9",
+    name: "Colorfit Cream Blush 01 Sand Coral",
+    brand: "Wardah",
+    price: 47520,
+    image: "/img/cream-blush/01-sand-coral.jpg",
+    category: "cream-blush",
+    skintoneMatch: "fair",
+    platform: "shopee"
+  },
+  {
+    id: "10",
+    name: "Colorfit Cream Blush 02 Merry Mauve",
+    brand: "Wardah",
+    price: 47520,
+    image: "/img/cream-blush/02-merry-mauve.jpg",
+    category: "cream-blush",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "11",
+    name: "Colorfit Cream Blush 03 Summer Peach",
+    brand: "Wardah",
+    price: 47520,
+    image: "/img/cream-blush/03-summer-peach.jpg",
+    category: "cream-blush",
+    skintoneMatch: "fair",
+    platform: "shopee"
+  },
+  {
+    id: "12",
+    name: "Colorfit Cream Blush 04 Ethereal Rose",
+    brand: "Wardah",
+    price: 47520,
+    image: "/img/cream-blush/04-ethereal-rose.jpg",
+    category: "cream-blush",
+    skintoneMatch: "dark",
+    platform: "shopee"
+  },
+  {
+    id: "13",
+    name: "Colorfit Cream Blush 05 Peachful Plum",
+    brand: "Wardah",
+    price: 47520,
+    image: "/img/cream-blush/05-peachful-plum.jpg",
+    category: "cream-blush",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "14",
+    name: "Colorfit Cream Blush 06 Soulful Brick",
+    brand: "Wardah",
+    price: 47520,
+    image: "/img/cream-blush/06-soulful-brick.jpg",
+    category: "cream-blush",
+    skintoneMatch: "dark",
+    platform: "shopee"
+  },
+
+  // LIP GLASTING
+  {
+    id: "15",
+    name: "Liquid Lip Glasting 01 Caramel Coat",
+    brand: "Wardah",
+    price: 90210,
+    image: "/img/lip-glasting/01-caramel-coat.jpg",
+    category: "lip-glasting",
+    skintoneMatch: "fair",
+    platform: "shopee"
+  },
+  {
+    id: "16",
+    name: "Liquid Lip Glasting 02 Summer Terracotta",
+    brand: "Wardah",
+    price: 90210,
+    image: "/img/lip-glasting/02-summer-terracotta.jpg",
+    category: "lip-glasting",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "17",
+    name: "Liquid Lip Glasting 03 Rose Notes",
+    brand: "Wardah",
+    price: 90210,
+    image: "/img/lip-glasting/03-rose-notes.jpg",
+    category: "lip-glasting",
+    skintoneMatch: "fair",
+    platform: "shopee"
+  },
+  {
+    id: "18",
+    name: "Liquid Lip Glasting 04 Pink Fountain",
+    brand: "Wardah",
+    price: 90210,
+    image: "/img/lip-glasting/04-pink-fountain.jpg",
+    category: "lip-glasting",
+    skintoneMatch: "medium",
+    platform: "shopee"
+  },
+  {
+    id: "19",
+    name: "Liquid Lip Glasting 05 Plum Odyssey",
+    brand: "Wardah",
+    price: 90210,
+    image: "/img/lip-glasting/05-plum-odyssey.jpg",
+    category: "lip-glasting",
+    skintoneMatch: "dark",
+    platform: "shopee"
+  },
+  {
+    id: "20",
+    name: "Liquid Lip Glasting 06 Dusty Library",
+    brand: "Wardah",
+    price: 90210,
+    image: "/img/lip-glasting/06-dusty-library.jpg",
+    category: "lip-glasting",
+    skintoneMatch: "dark",
+    platform: "shopee"
+  }
+
+
     ];
 
     this._platforms = {
@@ -166,26 +245,26 @@ const ProductView = {
     `);
   }
 
-  if (!user.skintoneResult) {
-    return await Layout.wrap(`
-      <section class="py-5" style="background: #fce7f3;">
-        <div class="container d-flex justify-content-center align-items-center" style="min-height:60vh;padding-top:80px;">
-          <div class="card rounded-4 text-center shadow-sm p-4" style="max-width: 440px;">
-            <div class="mb-3">
-              <i class="bi bi-stars fs-1 text-pink"></i>
-            </div>
-            <h5 class="card-title mb-3">Analisis Skintone Diperlukan</h5>
-            <p class="card-text">
-              Lakukan analisis skintone terlebih dahulu untuk mendapatkan rekomendasi produk yang sesuai dengan kulitmu.
-            </p>
-            <div class="d-grid gap-2 mt-4">
-              <a href="/classification" class="btn btn-pink rounded-5 d-flex justify-content-center align-items-center gap-2 px-4 py-2 fw-semibold">Analisis Skintone</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    `);
-  }
+  // if (!user.skintoneResult) {
+  //   return await Layout.wrap(`
+  //     <section class="py-5" style="background: #fce7f3;">
+  //       <div class="container d-flex justify-content-center align-items-center" style="min-height:60vh;padding-top:80px;">
+  //         <div class="card rounded-4 text-center shadow-sm p-4" style="max-width: 440px;">
+  //           <div class="mb-3">
+  //             <i class="bi bi-stars fs-1 text-pink"></i>
+  //           </div>
+  //           <h5 class="card-title mb-3">Analisis Skintone Diperlukan</h5>
+  //           <p class="card-text">
+  //             Lakukan analisis skintone terlebih dahulu untuk mendapatkan rekomendasi produk yang sesuai dengan kulitmu.
+  //           </p>
+  //           <div class="d-grid gap-2 mt-4">
+  //             <a href="/classification" class="btn btn-pink rounded-5 d-flex justify-content-center align-items-center gap-2 px-4 py-2 fw-semibold">Analisis Skintone</a>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </section>
+  //   `);
+  // }
 
     // Filter produk berdasarkan skintone user jika ada
     let filteredProducts = products;
@@ -274,97 +353,67 @@ const ProductView = {
     const searchForm = document.getElementById("search-form");
 
     function renderProducts(list) {
-      if (!productsList) return;
-      if (list.length === 0) {
-        productsList.innerHTML = `
-        <div class="col-12">
-          <div class="text-center py-5">
-            <div class="card p-4 mx-auto shadow-sm" style="max-width: 600px;">
-              <i class="bi bi-search fs-1 text-muted mb-3"></i>
-              <h5 class="fw-semibold mb-2">Produk Tidak Ditemukan</h5>
-              <p class="text-muted mb-0">Coba ubah kata kunci pencarian untuk menemukan produk yang kamu cari</p>
-            </div>
-          </div>
-        </div>
-      `;
-        return;
-      }
-      productsList.innerHTML = list
-        .map(
-          (product) => `
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm p-2">
-          <div class="position-relative">
-            <img src="${product.image}" alt="${
-            product.name
-          }" class="card-img-top rounded-3" style="height:220px;object-fit:cover;">
-            ${
-              product.originalPrice
-                ? `
-              <span class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 rounded-end small fw-semibold" style="font-size:0.85rem;">
-                ${Math.round(
-                  (1 - product.price / product.originalPrice) * 100
-                )}% OFF
-              </span>
-            `
-                : ""
-            }
-            <span class="position-absolute bottom-0 start-0 mb-2 ms-2 px-2 py-1 rounded-pill small ${
-              platforms[product.platform].color
-            }">
-              ${platforms[product.platform].name}
-            </span>
-          </div>
-          <div class="card-body d-flex flex-column">
-            <div>
-              <div class="text-muted small mb-1">${product.brand}</div>
-              <h5 class="card-title fw-semibold mb-2">${product.name}</h5>
-              <div class="mb-2">
-                <span class="fw-bold text-danger fs-5">Rp ${product.price.toLocaleString(
-                  "id-ID"
-                )}</span>
-                ${
-                  product.originalPrice
-                    ? `<span class="text-muted text-decoration-line-through ms-2">Rp ${product.originalPrice.toLocaleString(
-                        "id-ID"
-                      )}</span>`
-                    : ""
-                }
-              </div>
-              <span class="badge rounded-pill mb-2 ${
-                product.skintoneMatch === "warm"
-                  ? "bg-warning text-dark"
-                  : product.skintoneMatch === "cool"
-                  ? "bg-primary"
-                  : product.skintoneMatch === "neutral"
-                  ? "bg-success"
-                  : "bg-secondary"
-              }">
-                ${product.skintoneMatch}
-              </span>
-              <div class="mb-2">
-                <span class="text-warning">${"★".repeat(
-                  Math.floor(product.rating)
-                )}</span>
-                <span class="text-muted small">(${product.reviewCount})</span>
-              </div>
-              <p class="card-text small mb-2">${product.description}</p>
-              
-            </div>
-            <div class="mt-auto d-flex gap-2">
-              <a href="${
-                product.shopLink
-              }" target="_blank" rel="noopener" class="btn btn-pink flex-grow-1 d-flex align-items-center justify-content-center gap-2">
-                <i class="bi bi-bag-heart"></i> Beli Sekarang
-              </a>
-            </div>
+  if (!productsList) return;
+  if (list.length === 0) {
+    productsList.innerHTML = `
+      <div class="col-12">
+        <div class="text-center py-5">
+          <div class="card p-4 mx-auto shadow-sm" style="max-width: 600px;">
+            <i class="bi bi-search fs-1 text-muted mb-3"></i>
+            <h5 class="fw-semibold mb-2">Produk Tidak Ditemukan</h5>
+            <p class="text-muted mb-0">Coba ubah kata kunci pencarian untuk menemukan produk yang kamu cari</p>
           </div>
         </div>
       </div>
-    `
-        )
-        .join("");
-    }
+    `;
+    return;
+  }
+
+  productsList.innerHTML = list
+    .map(
+      (product) => `
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm p-2">
+        <div class="position-relative">
+          <img src="${product.image}" alt="${product.name}" class="card-img-top rounded-3" style="height:220px;object-fit:cover;">
+          <span class="position-absolute bottom-0 start-0 mb-2 ms-2 px-2 py-1 rounded-pill small ${
+            platforms[product.platform]?.color || "bg-secondary"
+          }">
+            ${platforms[product.platform]?.name || product.platform}
+          </span>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <div>
+            <div class="text-muted small mb-1">${product.brand}</div>
+            <h5 class="card-title fw-semibold mb-2">${product.name}</h5>
+            <div class="mb-2">
+              <span class="fw-bold text-danger fs-5">Rp ${product.price.toLocaleString("id-ID")}</span>
+            </div>
+            <span class="badge rounded-pill mb-2 ${
+              product.skintoneMatch === "fair"
+                ? "bg-light text-dark border"
+                : product.skintoneMatch === "medium"
+                ? "bg-warning text-dark"
+                : product.skintoneMatch === "dark"
+                ? "bg-dark text-white"
+                : "bg-secondary"
+            }">
+              ${product.skintoneMatch}
+            </span>
+          </div>
+          <div class="mt-auto d-flex gap-2">
+            <a href="#" class="btn btn-pink flex-grow-1 d-flex align-items-center justify-content-center gap-2 disabled">
+              <i class="bi bi-bag-heart"></i> Beli Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+    )
+    .join("");
+}
+
 
     renderProducts(products);
 
