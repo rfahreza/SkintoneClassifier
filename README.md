@@ -1,5 +1,12 @@
 # 🎨 SkintoneClassifier: Analisis Skintone Kulit Berbasis AI
 
+## Tonalytics - Demo Website
+
+Selamat datang di **Tonalytics**, platform untuk menganalisis skintone kulit menggunakan AI.
+
+## Petunjuk Penggunaan
+Untuk instruksi lebih lanjut, lihat file [USAGE.md](USAGE.md) untuk cara menggunakan website ini.
+
 **SkintoneClassifier** adalah aplikasi web berbasis AI yang menganalisis Skintone kulit pengguna dari foto wajah dan memberikan **rekomendasi palet warna serta tips makeup/fashion** yang sesuai.
 
 ## ✨ Fitur Utama
@@ -95,3 +102,5 @@ Model `best_model.keras` adalah model klasifikasi gambar berbasis **TensorFlow/K
 - Gunakan gambar dengan pencahayaan yang baik.
 - Hindari makeup berlebihan.
 - Ambil gambar dari depan (frontal).
+
+
