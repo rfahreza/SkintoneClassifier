@@ -26,7 +26,7 @@ Untuk instruksi lebih lanjut, lihat file [USAGE.md](USAGE.md) untuk cara menggun
 - 📱 **Antarmuka Responsif**  
   Tampilan modern, responsif, dan ramah pengguna untuk semua ukuran layar.
 
-## 💻 Persyaratan Sistem
+## 💻 Persyaratan System
 
 - **Python** 3.8+
 - **Node.js** 14+
