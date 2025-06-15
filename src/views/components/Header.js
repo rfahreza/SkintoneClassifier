@@ -6,13 +6,14 @@ const Header = {
       <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm fixed-top">
         <div class="container justify-content-center">
           <a class="navbar-brand fw-bold d-flex align-items-center mx-auto" href="/">
+            <img src="favicon.png" alt="Tonalytics Logo" style="height: 32px;margin-right:10px">
             <span class="fs-4" style="background: linear-gradient(to right, #fb7185, #f472b6); -webkit-background-clip: text; color: transparent;">Tonalytics</span>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <div class="collapse navbar-collapse justify-content-center align-items-center" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto gap-4 gap-lg-5">
               <li class="nav-item"><a class="nav-link ${isActive('/')}" href="/">Home</a></li>
               <li class="nav-item"><a class="nav-link ${isActive(

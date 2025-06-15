@@ -39,11 +39,9 @@ const ProfileView = {
                   <ul class="list-group list-group-flush text-start">
                     <li class="list-group-item"><strong>Nama:</strong> ${user.name || '-'}</li>
                     <li class="list-group-item"><strong>Email:</strong> ${user.email || '-'}</li>
-                    <li class="list-group-item"><strong>Tipe Skintone:</strong> ${user.skintoneResult?.type || '-'}</li>
                   </ul>
 
                   <div class="d-grid gap-2 mt-4">
-                    <a href="#/edit-profile" class="btn btn-outline-pink rounded-5">Edit Profil</a>
                     <a href="/logout" class="btn btn-pink rounded-5">Logout</a>
                   </div>
                 </div>

@@ -7,9 +7,7 @@ const Footer = {
             <!-- Brand Column -->
             <div class="col-lg-4">
               <div class="d-flex align-items-center mb-3">
-                <div class="bg-gradient-pink text-white d-flex align-items-center justify-content-center rounded-circle me-2" style="width: 40px; height: 40px;">
-                  <i class="bi bi-heart-fill"></i>
-                </div>
+                <img src="favicon.png" alt="Icon" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
                 <h5 class="fw-bold mb-0">Tonalytics</h5>
               </div>
               <p class="text-muted">

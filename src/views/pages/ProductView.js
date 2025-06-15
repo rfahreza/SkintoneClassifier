@@ -6,7 +6,6 @@ const ProductView = {
   async render() {
     const user = Auth.getUser();
 
-    // Data produk dummy (bisa ambil dari presenter jika sudah ada)
     const products = [
   // CUSHION
   {
@@ -27,16 +26,6 @@ const ProductView = {
     image: "/img/chusion/22n-light-ivory.jpg",
     category: "chusion",
     skintoneMatch: "fair",
-    platform: "shopee"
-  },
-  {
-    id: "3",
-    name: "Colorfit Cushion 23W Warm Ivory",
-    brand: "Wardah",
-    price: 122550,
-    image: "/img/chusion/23w-warm-ivory.jpg",
-    category: "chusion",
-    skintoneMatch: "medium",
     platform: "shopee"
   },
   {
@@ -122,16 +111,6 @@ const ProductView = {
     platform: "shopee"
   },
   {
-    id: "12",
-    name: "Colorfit Cream Blush 04 Ethereal Rose",
-    brand: "Wardah",
-    price: 47520,
-    image: "/img/cream-blush/04-ethereal-rose.jpg",
-    category: "cream-blush",
-    skintoneMatch: "dark",
-    platform: "shopee"
-  },
-  {
     id: "13",
     name: "Colorfit Cream Blush 05 Peachful Plum",
     brand: "Wardah",
@@ -139,16 +118,6 @@ const ProductView = {
     image: "/img/cream-blush/05-peachful-plum.jpg",
     category: "cream-blush",
     skintoneMatch: "medium",
-    platform: "shopee"
-  },
-  {
-    id: "14",
-    name: "Colorfit Cream Blush 06 Soulful Brick",
-    brand: "Wardah",
-    price: 47520,
-    image: "/img/cream-blush/06-soulful-brick.jpg",
-    category: "cream-blush",
-    skintoneMatch: "dark",
     platform: "shopee"
   },
 
@@ -163,56 +132,6 @@ const ProductView = {
     skintoneMatch: "fair",
     platform: "shopee"
   },
-  {
-    id: "16",
-    name: "Liquid Lip Glasting 02 Summer Terracotta",
-    brand: "Wardah",
-    price: 90210,
-    image: "/img/lip-glasting/02-summer-terracotta.jpg",
-    category: "lip-glasting",
-    skintoneMatch: "medium",
-    platform: "shopee"
-  },
-  {
-    id: "17",
-    name: "Liquid Lip Glasting 03 Rose Notes",
-    brand: "Wardah",
-    price: 90210,
-    image: "/img/lip-glasting/03-rose-notes.jpg",
-    category: "lip-glasting",
-    skintoneMatch: "fair",
-    platform: "shopee"
-  },
-  {
-    id: "18",
-    name: "Liquid Lip Glasting 04 Pink Fountain",
-    brand: "Wardah",
-    price: 90210,
-    image: "/img/lip-glasting/04-pink-fountain.jpg",
-    category: "lip-glasting",
-    skintoneMatch: "medium",
-    platform: "shopee"
-  },
-  {
-    id: "19",
-    name: "Liquid Lip Glasting 05 Plum Odyssey",
-    brand: "Wardah",
-    price: 90210,
-    image: "/img/lip-glasting/05-plum-odyssey.jpg",
-    category: "lip-glasting",
-    skintoneMatch: "dark",
-    platform: "shopee"
-  },
-  {
-    id: "20",
-    name: "Liquid Lip Glasting 06 Dusty Library",
-    brand: "Wardah",
-    price: 90210,
-    image: "/img/lip-glasting/06-dusty-library.jpg",
-    category: "lip-glasting",
-    skintoneMatch: "dark",
-    platform: "shopee"
-  }
 
 
     ];
@@ -283,25 +202,6 @@ const ProductView = {
           <div class="text-center mb-5">
             <h1 class="display-5 fw-bold">Rekomendasi Produk <span class="text-danger">Kecantikan</span></h1>
             <p class="lead mb-3">Temukan produk makeup terbaik yang cocok dengan skintone kulitmu</p>
-            ${
-              user.skintoneResult
-                ? `
-              <div class="mt-3 d-inline-block bg-white rounded-pill px-4 py-2 border border-danger">
-                <span class="small">Menampilkan produk untuk skintone: 
-                  <span class="fw-semibold text-capitalize ${
-                    user.skintoneResult.type === "warm"
-                      ? "text-warning"
-                      : user.skintoneResult.type === "cool"
-                      ? "text-primary"
-                      : "text-success"
-                  }">
-                    ${user.skintoneResult.type}
-                  </span>
-                </span>
-              </div>
-            `
-                : ""
-            }
           </div>
           <div class="card p-3 mb-4 shadow-sm" style="max-width: 480px; margin:0 auto;">
             <form id="search-form">
@@ -313,26 +213,11 @@ const ProductView = {
           </div>
           <div id="products-list" class="row g-4">
             <!-- Produk akan dirender di afterRender -->
-          </div>
-          ${
-            user && !user.skintoneResult
-              ? `
-            <div class="mt-5 bg-gradient-pink rounded-4 p-5 text-center text-white">
-              <h3 class="fw-bold mb-3">Dapatkan Rekomendasi yang Lebih Personal!</h3>
-              <p class="mb-4">Lakukan analisis skintone terlebih dahulu untuk mendapatkan rekomendasi produk yang lebih tepat</p>
-              <a href="/classification" class="btn btn-light text-danger fw-semibold px-4 py-2 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm">
-                <i class="bi bi-stars"></i>
-                Analisis Skintone Sekarang
-              </a>
-            </div>
-          `
-              : ""
-          }
+          </div> 
         </div>
       </section>
     `);
 
-    // Simpan produk di instance untuk afterRender
     this._allProducts = products;
     this._filteredProducts = filteredProducts;
 

@@ -66,9 +66,9 @@ const mockResults = [
 const ClassificationView = {
   async render() {
     const contentHtml = `
-      <section class="py-5 min-vh-100" style="background:  #fce7f3">
+      <section class="py-4 min-vh-100" style="background:  #fce7f3">
         <div class="container" style="max-width: 900px;">
-          <div class="text-center mb-5" style="padding-top: 100px;">
+          <div class="text-center">
             <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; background: linear-gradient(90deg,#f43f5e,#ec4899);">
               <i class="bi bi-camera-fill text-white fs-1"></i>
             </div>
@@ -161,7 +161,6 @@ const ClassificationView = {
     let stream = null;
     let selectedFile = null;
 
-    // Fungsi untuk mematikan kamera
     function stopCamera() {
       if (stream) {
         stream.getTracks().forEach((track) => track.stop());
@@ -175,7 +174,6 @@ const ClassificationView = {
       }
     }
 
-    // Matikan kamera saat pindah halaman
     window.addEventListener('hashchange', stopCamera);
 
     fileInput.addEventListener('change', (e) => {
@@ -216,7 +214,7 @@ const ClassificationView = {
           const dataUrl = cameraCanvas.toDataURL('image/png');
           previewContainer.innerHTML = `<img src="${dataUrl}" class="img-fluid rounded shadow" style="max-height: 300px">`;
           analyzeButton.disabled = false;
-          stopCamera(); // pastikan kamera ditutup setelah ambil gambar
+          stopCamera(); 
           window.selectedFile = dataURLtoFile(dataUrl, 'capture.png');
         };
       } catch (err) {
@@ -232,7 +230,6 @@ const ClassificationView = {
       resultSection.style.display = 'none';
 
       try {
-        // Panggil backend Flask lewat presenter
         const result = await ClassificationPresenter.analyze(fileToAnalyze);
 
         loadingSpinner.style.display = "none";
@@ -244,16 +241,13 @@ const ClassificationView = {
       }
 
       analyzeButton.disabled = false;
-      stopCamera(); // pastikan kamera dimatikan setelah analisis
+      stopCamera(); 
     });
 
     function renderResult(result) {
       return `
         <div class="mt-4">
           <div class="text-center mb-4">
-            <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; background: linear-gradient(90deg,#f43f5e,#ec4899);">
-              <i class="bi bi-stars text-white fs-1"></i>
-            </div>
             <h2 class="fw-bold mb-2">Hasil Analisis Undertone</h2>
             <p class="lead mb-1">Confidence Level: <span class="fw-semibold text-danger">${
               result.confidence
@@ -327,7 +321,6 @@ const ClassificationView = {
       `;
     }
 
-    // Reset untuk analisis ulang
     resultSection.addEventListener('click', function (e) {
       if (e.target.closest('#analyze-again-btn')) {
         resultSection.style.display = 'none';
